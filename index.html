@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>raonoman.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+    <div id="particles-js"></div>
+    <div id="box">
+        <div class="box1 onlywide animated bounceOutLeft" style="animation-delay:1.7s;"></div>
+        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.8s;"></div>
+        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.9s;"></div>
+        <div class="box2 animated bounceOutRight" style="animation-delay:1.9s;"></div>
+        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.8s;"></div>
+        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.7s;"></div>
+    </div>
+    <a id="about" onclick="showabout()" class="animated fadeIn" style="animation-delay:2.2s;">about</a>
+    <a id="work" onclick="showwork()" class="animated fadeIn" style="animation-delay:2.2s;">work</a>
+    <a id="contact" onclick="showcontact()" class="animated fadeIn" style="animation-delay:2.2s;">contact</a>
+    <div id="middle" class="animated slideInDown" style="animation-delay:2.0s;">
+        <h1>Rao Noman</h1>
+        <h2>Software Developer / Flutter / Kony / iOS / Fintech</h2>
+        <div id="menu">
+            <a onclick="showabout()">about</a>
+            <a onclick="showwork()">work</a>
+            <a onclick="showcontact()">contact</a>
+        </div>
+        <table>
+                <tr>
+                    <td class="animated zoomIn" style="animation-delay:2.8s;">
+                        <a href="https://www.linkedin.com/in/rao-muhammad-noman-448745a1/" class="social"><i class="fab fa-linkedin"></i></a>
+                </td>
+                <td class="animated zoomIn" style="animation-delay:2.4s;">
+                    <a href="https://twitter.com/RaoNoma97840139" class="social"><i class="fab fa-twitter"></i></a>
+                </td>
+                    <td class="animated zoomIn" style="animation-delay:2.2s;">
+                        <a href="https://www.facebook.com/rao.noman1" class="social"><i class="fab fa-facebook"></i></a>
+                    </td>
+                    
+                    <!-- <td class="animated zoomIn" style="animation-delay:2.6s;"><a class="social"><i class="fab fa-cv"></i></a></td>
+                     -->
+                </tr>
+        </table>
+    </div>
+    <div id="work_container" class="container">
+        <div onclick="closework()"><i class="fas fa-angle-right"></i></div>
+        <h1>Projects</h1>
+        <section>
+            <h2>Bank Nizwa Wallet</h2>
+            <p>
+                Convert user mobile into Digital wallet using Bank Nizwa Mobile Wallet application.
+                It allows user to transact in safe and secure way using your mobile wallet anytime anywhere. 
+                Customers of Bank Nizwa as well as unbanked customers can benefit from E-Wallet App.
+            </p>
+            <div id="used">
+                <div><i class="fas fa-circle"></i>&nbsp;Flutter</div>
+                <div><i class="fas fa-circle"></i>&nbsp;Dart</div>
+            </div>
+            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=om.nizwa.wallet&hl=en';">Play Store</button>
+            <button class="btn_two" onclick="location.href='https://apps.apple.com/au/app/bank-nizwa-wallet/id1248765650';">App Store</button>
+        </section>
+        <section>
+            <h2>MIB Bank</h2>
+            <p>
+                Manage your MIB Bank accounts with ease using MIB Banks's official mobile banking application for both android & iOS.
+                User can easily do
+                Fingerprint authentication login,Transaction over a complete secure medium,Easy funds transafer,Mini statement,Account Statement
+                Pay Bill,Keep track of your net worth,Get transaction alerts,Schedule your transactions as desired,View and manage your transaction history
+                View and manage your login history,Internet Banking disabling option.
+            </p>
+            <div id="used">
+                <div><i class="fas fa-circle"></i>&nbsp;Xamrain</div>
+                <div><i class="fas fa-circle"></i>&nbsp;C#</div>
+            </div>
+            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.mcbislamicbank.mobileapp&hl=en';">Play Store</button>
+            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/mcb-islamic/id1219887038';">App Store</button>
+        </section>
+        <section>
+            <h2>SAIB Corporate Currency Card</h2>
+            <p>
+                The Saudi Investment Bank is pleased to introduce the first multi-currency corporate card application in the 
+                Kingdom of Saudi Arabia, which enables the cardholder to benefit from a unique set of card management services electronically.
+                With easy and convenient way of registration and access to the service.
+                Do not hesitate to request the service through your company or your employer today.
+            </p>
+            <div id="used">
+                <div><i class="fas fa-circle"></i>&nbsp;Flutter</div>
+                <div><i class="fas fa-circle"></i>&nbsp;Dart</div>
+            </div>
+            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
+            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button>
+        </section>
+        <section>
+            <h2>Kony DBX Customisation</h2>
+            <p>
+                Convert user mobile into Digital wallet using Bank Nizwa Mobile Wallet application.
+                It allows user to transact in safe and secure way using your mobile wallet anytime anywhere. 
+                Customers of Bank Nizwa as well as unbanked customers can benefit from E-Wallet App.
+            </p>
+            <div id="used">
+                <div><i class="fas fa-circle"></i>&nbsp;Kony</div>
+                <div><i class="fas fa-circle"></i>&nbsp;Kony Fabric</div>
+                <div><i class="fas fa-circle"></i>&nbsp;Kony DBX</div>
+                <div><i class="fas fa-circle"></i>&nbsp;JavaScript</div>
+            </div>
+            <!-- <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
+            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button> -->
+        </section>
+        <section>
+            <h2>PIA Mobile App </h2>
+            <p>
+                This application facilitate user to easily book a flight , generate PNR , award plus mileage , tracking of flight.
+            </p>
+            <div id="used">
+                <div><i class="fas fa-circle"></i>&nbsp;iOS</div>
+                <div><i class="fas fa-circle"></i>&nbsp;Swift</div>
+            </div>
+            <!-- <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
+            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button> -->
+        </section>
+    </div>
+    <div id="about_container" class="container">
+            <div onclick="closeabout()"><i class="fas fa-angle-left"></i></div>
+            <h1>About Me</h1>
+            <section>
+                <!-- <h2>About Me</h2> -->
+                <p>
+                    I am passionate mobile developer who work on Flutter, Kony ,React native, Xamrain and iOS native application development. 
+                    I excel at solving technical problems using Dart, JavaScript and Swift.My career in development began in end of 2017 when I started working as a Software Intern in
+                    Pakistan International Airline where i worked on iOS mobile development and PHP for web development.
+ ,
+                </p>
+                <p>
+                    After that i joined TPS Worlwide as Software Engineer (Mobile Development) where i worked different financial client accross globe.
+                    Now i am part of Xpert Digital(Temenos Patner) where i work as Software Engineer with different International banks.
+                    I worked on FLutter,Kony,Reactnative and iOS native development. Futhermore i am KONY certifed mobile developer.
+                    Also co-founder of Flutter community Pakistan and actively take part in community talks.
+                </p>
+                <p>
+                   Other than work I am passionate about cricket. Many time i represent my country internationally on university and club level in cricket.
+                   Futhermore like travelling and music.
+                </p>
+            </section>
+            <section>
+                <h2>skills</h2>
+                <p>
+                    Flutter , Kony , Reactnative , iOS , KonyFabric, KonyDBX , Swift, Dart , Javascript
+                </p>
+            </section>
+        </div>
+          <div id="contact_container" class="container">
+            <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
+            <h1>Contact Me.</h1>
+            <section>
+                <!-- <h2>contact me</h2> -->
+                <section>
+                    <!-- <h2>About Me</h2> -->
+                    <p> Location : Karachi, Pakistan </p>
+                    <p> Email: rao.noman786@outlook.com </p>
+                    <p> Mobile No / WhatsApp: +923332256193 </p>
+                </section>
+                
+                <p>
+                    <form>
+                        <input type="text" placeholder="name" required>
+                        <input type="email" placeholder="email" required><br>
+                        <textarea placeholder="your message" required rows="5"></textarea><br>
+                        <button class="btn_one">send</button>
+                    </form> 
+                </p>
+            </section>
+        </div>
+        <!-- <div id="footer">
+            made on earth by a human <br> <a href="https://imfunniee.github.io">imfunniee</a>
+        </div> -->
+    <script src="index.js" type="text/javascript"></script>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
