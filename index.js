@@ -1,3 +1,11 @@
+// ===== Theme Toggle =====
+(function () {
+    var saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+})();
+
 // ===== Page Navigation =====
 document.addEventListener('DOMContentLoaded', function () {
     var navItems = document.querySelectorAll('.nav-item');
@@ -23,6 +31,36 @@ document.addEventListener('DOMContentLoaded', function () {
             var sidebar = document.querySelector('.sidebar');
             if (sidebar) sidebar.classList.remove('open');
         });
+    });
+
+    // ===== Theme Toggle =====
+    var themeToggle = document.getElementById('themeToggle');
+    function updateIcon() {
+        var current = document.documentElement.getAttribute('data-theme');
+        themeToggle.innerHTML = current === 'light'
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+    }
+    updateIcon();
+
+    themeToggle.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'light' ? 'dark' : 'light';
+        if (next === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', next);
+        }
+        localStorage.setItem('theme', next);
+        updateIcon();
+
+        // Reload particles with new theme config
+        if (window.pJSDom && window.pJSDom.length > 0) {
+            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+            window.pJSDom = [];
+        }
+        var config = window.particlesConfigs[next] || window.particlesConfigs.dark;
+        particlesJS('particles-js', config);
     });
 
     // ===== Mobile Menu =====
