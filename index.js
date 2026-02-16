@@ -126,6 +126,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // ===== Theme Toggle =====
+    var themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', function () {
+            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
     // ===== Typing Effect for Hero =====
     var heroName = document.querySelector('.hero-name');
     if (heroName) {

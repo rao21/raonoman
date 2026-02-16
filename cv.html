@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rao Muhammad Noman - CV</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: #000;
+            background: #e2e8f0;
+            font-size: 9.5pt;
+            line-height: 1.35;
+        }
+
+        .cv-page {
+            width: 210mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            margin: 16px auto;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 20px 28px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .cv-header {
+            text-align: center;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #000;
+        }
+
+        .cv-header h1 {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .cv-title {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .cv-contact {
+            font-size: 8.5pt;
+            color: #333;
+            text-align: center;
+        }
+
+        .cv-contact a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .cv-contact .sep { color: #999; }
+
+        /* Sections */
+        .section { margin-bottom: 7px; }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #000;
+            padding-bottom: 2px;
+            margin-bottom: 4px;
+            border-bottom: 1.5px solid #000;
+        }
+
+        /* Summary */
+        .summary {
+            font-size: 8.5pt;
+            color: #222;
+            line-height: 1.4;
+        }
+
+        /* Skills */
+        .skills-row {
+            font-size: 8.5pt;
+            margin-bottom: 1px;
+            color: #222;
+        }
+
+        .skills-row strong { color: #000; }
+
+        /* Experience */
+        .job { margin-bottom: 5px; }
+
+        .job-row1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 9pt;
+            color: #000;
+        }
+
+        .job-date {
+            font-size: 8pt;
+            color: #333;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .job-company {
+            font-size: 8.5pt;
+            color: #444;
+            font-style: italic;
+        }
+
+        .job ul {
+            padding-left: 16px;
+            font-size: 8pt;
+            color: #222;
+        }
+
+        .job ul li { margin-bottom: 0; }
+
+        /* Two-column layout for compact jobs */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 20px;
+        }
+
+        .job-compact { margin-bottom: 3px; }
+
+        .job-compact .job-title { font-size: 8.5pt; }
+        .job-compact .job-company { font-size: 8pt; }
+        .job-compact .job-date { font-size: 7.5pt; }
+        .job-compact ul { font-size: 7.5pt; }
+
+        /* Education & Certs */
+        .edu-row1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .edu-title {
+            font-weight: bold;
+            font-size: 9pt;
+            color: #000;
+        }
+
+        .edu-date {
+            font-size: 8pt;
+            color: #333;
+        }
+
+        .edu-sub {
+            font-size: 8.5pt;
+            color: #444;
+        }
+
+        .cert-item {
+            font-size: 8.5pt;
+            color: #222;
+            margin-bottom: 1px;
+        }
+
+        /* Print */
+        .print-btn {
+            position: fixed;
+            top: 20px; right: 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .print-btn:hover { background: #333; }
+
+        @media print {
+            body { background: #fff; margin: 0; }
+            .cv-page { margin: 0; box-shadow: none; padding: 16px 24px; }
+            .no-print { display: none !important; }
+            @page { margin: 0; size: A4; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Download PDF</button>
+
+<div class="cv-page">
+    <!-- Header -->
+    <div class="cv-header">
+        <h1>RAO MUHAMMAD NOMAN</h1>
+        <div class="cv-title">Lead Flutter Engineer | Mobile Consultant | Fintech & AI Apps Specialist</div>
+        <div class="cv-contact">
+            Karachi, Pakistan
+            <span class="sep"> | </span>
+            <a href="mailto:rao.noman786@outlook.com">rao.noman786@outlook.com</a>
+            <span class="sep"> | </span>
+            <a href="tel:+923332256193">+92 333 2256193</a>
+            <span class="sep"> | </span>
+            <a href="https://www.linkedin.com/in/rao-muhammad-noman-448745a1/">LinkedIn</a>
+            <span class="sep"> | </span>
+            <a href="https://github.com/rao21">GitHub</a>
+            <span class="sep"> | </span>
+            <a href="https://rao21.github.io/raonoman/">Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">Mobile development expert with 8+ years of experience building high-performance applications serving millions of users globally. Specialized in Flutter, Dart, Swift and cross-platform frameworks with deep expertise in fintech, digital banking and AI-powered solutions. Proven track record leading mobile teams for startups across MENA, US and UK. Co-Founder of Flutter Pakistan and Flutter Instructor at IBA Karachi.</p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-row"><strong>Mobile:</strong> Flutter, Dart, Swift, SwiftUI, iOS, Android, React Native, Xamarin</div>
+        <div class="skills-row"><strong>AI & Tools:</strong> Claude AI, Cursor, AI-Assisted Development, Firebase, REST APIs, GraphQL</div>
+        <div class="skills-row"><strong>Fintech:</strong> Temenos Infinity, Kony Fabric, Digital Wallets, Payment Systems, Card Management</div>
+        <div class="skills-row"><strong>DevOps:</strong> App Store, Play Store, CI/CD, Codemagic, Fastlane, GitHub Actions, Azure DevOps, Git</div>
+        <div class="skills-row"><strong>Languages:</strong> Dart, Swift, JavaScript, C#, PHP</div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Lead Flutter Engineer</span>
+                <span class="job-date">Apr 2022 - Present</span>
+            </div>
+            <div class="job-company">Xpence, MENA Region - Remote</div>
+            <ul>
+                <li>Leading mobile development for multiple fintech products including Xpence, Cence and Figg Wealth serving users across GCC</li>
+                <li>Built Xpence - business expense management platform with corporate debit cards, automated bookkeeping and real-time spending tracking</li>
+                <li>Developed Cence - AI-powered fintech app with personalized card recommendations, cashback discovery and AI chat assistant</li>
+                <li>Built Figg Wealth - AI-driven wealth management app with camera-based asset valuation, portfolio insights and AES encryption</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Flutter Instructor (Part-Time)</span>
+                <span class="job-date">Jan 2023 - Present</span>
+            </div>
+            <div class="job-company">Institute of Business Administration (IBA), Karachi</div>
+            <ul>
+                <li>Teaching iOS and mobile development at Pakistan's top university; mentoring students in Flutter, Dart and app architecture</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Flutter Engineer</span>
+                <span class="job-date">Feb 2021 - Apr 2022</span>
+            </div>
+            <div class="job-company">Rock, US-based Startup - Remote</div>
+            <ul>
+                <li>Built all-in-one workspace app combining messaging, tasks, notes and video meetings with 1000+ Zapier integrations</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Senior Software Engineer - Flutter</span>
+                <span class="job-date">Aug 2020 - Nov 2021</span>
+            </div>
+            <div class="job-company">VentureDive, Karachi</div>
+            <ul>
+                <li>Led mobile team and mentored junior developers; contributed to JazzCash - Pakistan's largest mobile wallet serving millions</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Software Engineer - KONY Digital Banking</span>
+                <span class="job-date">Oct 2019 - Aug 2020</span>
+            </div>
+            <div class="job-company">Xpert Digital, Karachi</div>
+            <ul>
+                <li>Customized and delivered Temenos Infinity (Kony DBX) digital banking solutions for international banks</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Software Engineer - Flutter</span>
+                <span class="job-date">Nov 2017 - Oct 2019</span>
+            </div>
+            <div class="job-company">TPS Worldwide, Karachi</div>
+            <ul>
+                <li>Developed banking apps for international clients: Bank Nizwa Wallet (Oman), MIB Bank, SAIB Corporate Currency Card (Saudi Arabia)</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-row1">
+                <span class="job-title">Software Engineering Trainee</span>
+                <span class="job-date">Oct 2016 - Nov 2017</span>
+            </div>
+            <div class="job-company">Pakistan International Airlines (PIA), Karachi</div>
+            <ul>
+                <li>Built PIA mobile app using Swift - flight booking, PNR generation, mileage management and flight tracking</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Key Projects -->
+    <div class="section">
+        <div class="section-title">Key Projects</div>
+        <div class="cert-item"><strong>Xpence</strong> - Business expense management for GCC with corporate cards and automated bookkeeping (Flutter, Fintech)</div>
+        <div class="cert-item"><strong>Cence</strong> - AI-powered fintech app for card comparison and cashback discovery across UAE (Flutter, AI)</div>
+        <div class="cert-item"><strong>Figg Wealth</strong> - AI-driven wealth management with camera-based asset valuation (Flutter, AI)</div>
+        <div class="cert-item"><strong>JazzCash</strong> - Pakistan's largest mobile wallet serving millions of users (Flutter, Fintech)</div>
+        <div class="cert-item"><strong>Bank Nizwa / MIB / SAIB</strong> - Digital banking apps for Oman and Saudi Arabia (Flutter, Xamarin, Kony)</div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-row1">
+            <span class="edu-title">Master's Degree, Computer Software Engineering</span>
+            <span class="edu-date">Dec 2018 - Dec 2021</span>
+        </div>
+        <div class="edu-sub">Sir Syed University of Engineering & Technology (SSUET) - First Division</div>
+    </div>
+
+    <!-- Certifications & Community -->
+    <div class="section">
+        <div class="section-title">Certifications & Community</div>
+        <div class="cert-item"><strong>Certifications:</strong> Kony Certified Mobile Developer (2019) | SharePoint Development - Microsoft (2015)</div>
+        <div class="cert-item"><strong>Community:</strong> Co-Founder, Flutter Pakistan | Flutter Instructor at IBA Karachi | Conference Speaker</div>
+    </div>
+</div>
+
+</body>
+</html>

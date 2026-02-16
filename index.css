@@ -424,6 +424,34 @@ body::before {
     color: var(--bg-primary);
 }
 
+/* CV Download Button */
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-radius: 100px;
+    border: 2px solid var(--accent);
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+}
+
+.cv-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    box-shadow: 0 0 24px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.cv-btn i {
+    font-size: 17px;
+}
+
 .highlight {
     color: var(--accent);
 }

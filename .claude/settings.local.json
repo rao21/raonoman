@@ -14,7 +14,8 @@
       "WebFetch(domain:xpence.com)",
       "WebFetch(domain:cencepay.com)",
       "WebFetch(domain:figgwealth.com)",
-      "WebFetch(domain:flutterpk.github.io)"
+      "WebFetch(domain:flutterpk.github.io)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)"
     ]
   }
 }
