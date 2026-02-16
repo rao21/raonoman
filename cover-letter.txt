@@ -1,0 +1,63 @@
+RAO MUHAMMAD NOMAN
+Lead Flutter Engineer | Mobile Consultant
+Email: rao.noman786@outlook.com
+Phone: +92 333 2256193
+LinkedIn: linkedin.com/in/rao-muhammad-noman-448745a1
+GitHub: github.com/rao21
+Location: Karachi, Pakistan
+
+[Date]
+
+[Hiring Manager Name]
+[Company Name]
+[Company Address]
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the [Position Title] position at [Company Name]. With over 9 years of experience in mobile application development and a proven track record of building high-performance applications serving millions of users globally, I am confident in my ability to contribute significantly to your team.
+
+As a Lead Flutter Engineer, I have successfully delivered multiple fintech and AI-powered mobile applications for international clients across the MENA region, US, and UK. My expertise spans the entire mobile development lifecycle, from architecture design to deployment on both App Store and Play Store.
+
+KEY ACHIEVEMENTS:
+
+- Led mobile development for Xpence, a comprehensive business expense management platform serving the GCC region with real-time transaction tracking and corporate card management
+- Architected and delivered Cence, an AI-powered fintech app with intelligent spending insights and personalized recommendations across UAE
+- Built Figg Wealth, an AI-driven wealth management platform featuring camera-based asset valuation and portfolio analytics
+- Developed Rock, an all-in-one workspace application with 1000+ integrations
+- Contributed to JazzCash, Pakistan's largest mobile wallet trusted by millions of users
+- Successfully delivered banking solutions using Temenos Infinity for multiple international financial institutions
+
+TECHNICAL EXPERTISE:
+
+Mobile Development: Flutter, Dart, Swift, SwiftUI, iOS, Android, React Native, Xamarin
+AI & Integration: Claude AI, Cursor, Firebase, REST APIs, AI-powered features
+Fintech: Temenos Infinity, Kony Fabric, Digital Wallets, Payment Systems
+DevOps: CI/CD, Codemagic, Fastlane, GitHub Actions, Azure DevOps
+Languages: JavaScript, C#, PHP, Dart, Swift
+
+ADDITIONAL QUALIFICATIONS:
+
+- Flutter Instructor at Institute of Business Administration (IBA) Karachi, teaching mobile development to the next generation of developers
+- Co-Founder of Flutter Pakistan community, actively contributing to the developer ecosystem
+- Regular speaker at conferences and meetups on Flutter and fintech
+- Master's Degree in Computer Software Engineering from SSUET (First Division)
+- Kony Certified Mobile Developer
+
+What sets me apart is my ability to translate complex business requirements into scalable mobile solutions. I have experience working with remote international teams, managing end-to-end product delivery, and mentoring junior developers. My apps have collectively served millions of users across multiple countries, demonstrating my capability to build enterprise-grade solutions.
+
+I am particularly drawn to [Company Name] because of [specific reason - mention something about the company]. I believe my expertise in [relevant skills] aligns perfectly with your requirements, and I am excited about the opportunity to contribute to [specific project or goal].
+
+I am available for immediate start and open to relocation if required. I would welcome the opportunity to discuss how my experience and skills can benefit [Company Name].
+
+Thank you for considering my application. I look forward to the opportunity to speak with you.
+
+Sincerely,
+Rao Muhammad Noman
+
+
+REFERENCES:
+Available upon request
+
+---
+Portfolio: https://rao21.github.io/raonoman/
+CV: https://drive.google.com/file/d/1p1BJvbiWMWND3nUUdQnCX_mxluw2Yx01/view

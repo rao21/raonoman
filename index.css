@@ -1048,12 +1048,6 @@ body::before {
     display: none;
 }
 
-.theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: rotate(30deg);
-}
-
 
 /* ===== Mobile Menu Toggle ===== */
 .menu-toggle {
