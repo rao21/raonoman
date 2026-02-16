@@ -1,30 +1,79 @@
-// ===== Theme Toggle =====
-(function () {
-    var saved = localStorage.getItem('theme');
-    if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-    }
-})();
-
 // ===== Page Navigation =====
 document.addEventListener('DOMContentLoaded', function () {
     var navItems = document.querySelectorAll('.nav-item');
     var pages = document.querySelectorAll('.page');
+    var currentPage = 'launcher';
+    var isAnimating = false;
 
+    // ===== Reveal Animation Observer =====
+    function triggerReveals(container) {
+        var reveals = container.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        reveals.forEach(function (el, i) {
+            // Reset first
+            el.classList.remove('visible');
+            // Stagger the reveals
+            setTimeout(function () {
+                el.classList.add('visible');
+            }, 80 + (i * 60));
+        });
+    }
+
+    function resetReveals(container) {
+        var reveals = container.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        reveals.forEach(function (el) {
+            el.classList.remove('visible');
+        });
+    }
+
+    // Trigger initial page reveals
+    var initialPage = document.getElementById('launcher');
+    if (initialPage) {
+        setTimeout(function () {
+            triggerReveals(initialPage);
+        }, 200);
+    }
+
+    // ===== Page Switching =====
     navItems.forEach(function (item) {
         item.addEventListener('click', function (e) {
             e.preventDefault();
             var targetPage = this.getAttribute('data-page');
 
-            // Update active nav
+            if (targetPage === currentPage || isAnimating) return;
+            isAnimating = true;
+
+            // Update active nav with smooth indicator
             navItems.forEach(function (nav) { nav.classList.remove('active'); });
             this.classList.add('active');
 
-            // Show target page
-            pages.forEach(function (page) { page.classList.remove('active'); });
-            var target = document.getElementById(targetPage);
-            if (target) {
-                target.classList.add('active');
+            var currentEl = document.getElementById(currentPage);
+            var targetEl = document.getElementById(targetPage);
+
+            // Fade out current
+            if (currentEl) {
+                currentEl.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                currentEl.style.opacity = '0';
+                currentEl.style.transform = 'translateY(-20px)';
+
+                setTimeout(function () {
+                    currentEl.classList.remove('active');
+                    currentEl.style.opacity = '';
+                    currentEl.style.transform = '';
+                    currentEl.style.transition = '';
+                    resetReveals(currentEl);
+
+                    // Show new page
+                    if (targetEl) {
+                        targetEl.classList.add('active');
+                        triggerReveals(targetEl);
+                    }
+
+                    currentPage = targetPage;
+                    isAnimating = false;
+
+                    // Scroll to top
+                    document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
+                }, 250);
             }
 
             // Close mobile menu
@@ -33,35 +82,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== Theme Toggle =====
-    var themeToggle = document.getElementById('themeToggle');
-    function updateIcon() {
-        var current = document.documentElement.getAttribute('data-theme');
-        themeToggle.innerHTML = current === 'light'
-            ? '<i class="fas fa-sun"></i>'
-            : '<i class="fas fa-moon"></i>';
+    // ===== Scroll-triggered reveals for long pages =====
+    var mainEl = document.querySelector('.main');
+    if (mainEl) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { root: mainEl, threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) {
+            observer.observe(el);
+        });
     }
-    updateIcon();
-
-    themeToggle.addEventListener('click', function () {
-        var current = document.documentElement.getAttribute('data-theme');
-        var next = current === 'light' ? 'dark' : 'light';
-        if (next === 'dark') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', next);
-        }
-        localStorage.setItem('theme', next);
-        updateIcon();
-
-        // Reload particles with new theme config
-        if (window.pJSDom && window.pJSDom.length > 0) {
-            window.pJSDom[0].pJS.fn.vendors.destroypJS();
-            window.pJSDom = [];
-        }
-        var config = window.particlesConfigs[next] || window.particlesConfigs.dark;
-        particlesJS('particles-js', config);
-    });
 
     // ===== Mobile Menu =====
     var menuToggle = document.createElement('button');
@@ -80,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
             : '<i class="fas fa-bars"></i>';
     });
 
-    // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function (e) {
         if (window.innerWidth <= 768 &&
             sidebar.classList.contains('open') &&
@@ -98,16 +133,17 @@ document.addEventListener('DOMContentLoaded', function () {
         heroName.textContent = '';
         heroName.style.borderRight = '3px solid var(--accent)';
         var i = 0;
-        var typeInterval = setInterval(function () {
-            heroName.textContent += text.charAt(i);
-            i++;
-            if (i >= text.length) {
-                clearInterval(typeInterval);
-                // Blink cursor then remove
-                setTimeout(function () {
-                    heroName.style.borderRight = 'none';
-                }, 2000);
-            }
-        }, 80);
+        setTimeout(function () {
+            var typeInterval = setInterval(function () {
+                heroName.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(typeInterval);
+                    setTimeout(function () {
+                        heroName.style.borderRight = 'none';
+                    }, 2000);
+                }
+            }, 80);
+        }, 400);
     }
 });
