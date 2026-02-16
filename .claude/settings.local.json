@@ -15,7 +15,9 @@
       "WebFetch(domain:cencepay.com)",
       "WebFetch(domain:figgwealth.com)",
       "WebFetch(domain:flutterpk.github.io)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)",
+      "Bash(git add:*)",
+      "Bash(Mobile Consultant\" title on launcher\n- Add working dark/light theme toggle button\n- Add Open Graph & Twitter meta tags for social sharing\n- Add favicon\n- Update experience to 9+ years\n- Update page title & meta description\n- Fix main content overflow cutting off roles & CV button\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
