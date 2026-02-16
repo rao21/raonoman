@@ -3,184 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>raonoman.</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Rao Noman - Software Developer</title>
+    <meta name="description" content="Rao Noman - Software Developer specializing in Flutter, Kony, iOS & Fintech">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="loading">
-        <div id="spinner"></div>
-    </div>
     <div id="particles-js"></div>
-    <div id="box">
-        <div class="box1 onlywide animated bounceOutLeft" style="animation-delay:1.7s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.9s;"></div>
-        <div class="box2 animated bounceOutRight" style="animation-delay:1.9s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.7s;"></div>
-    </div>
-    <a id="about" onclick="showabout()" class="animated fadeIn" style="animation-delay:2.2s;">about</a>
-    <a id="work" onclick="showwork()" class="animated fadeIn" style="animation-delay:2.2s;">work</a>
-    <a id="contact" onclick="showcontact()" class="animated fadeIn" style="animation-delay:2.2s;">contact</a>
-    <div id="middle" class="animated slideInDown" style="animation-delay:2.0s;">
-        <h1>Rao Noman</h1>
-        <h2>Software Developer / Flutter / Kony / iOS / Fintech</h2>
-        <div id="menu">
-            <a onclick="showabout()">about</a>
-            <a onclick="showwork()">work</a>
-            <a onclick="showcontact()">contact</a>
-        </div>
-        <table>
-                <tr>
-                    <td class="animated zoomIn" style="animation-delay:2.8s;">
-                        <a href="https://www.linkedin.com/in/rao-muhammad-noman-448745a1/" class="social"><i class="fab fa-linkedin"></i></a>
-                </td>
-                <td class="animated zoomIn" style="animation-delay:2.4s;">
-                    <a href="https://twitter.com/RaoNoma97840139" class="social"><i class="fab fa-twitter"></i></a>
-                </td>
-                    <td class="animated zoomIn" style="animation-delay:2.2s;">
-                        <a href="https://www.facebook.com/rao.noman1" class="social"><i class="fab fa-facebook"></i></a>
-                    </td>
-                    
-                    <!-- <td class="animated zoomIn" style="animation-delay:2.6s;"><a class="social"><i class="fab fa-cv"></i></a></td>
-                     -->
-                </tr>
-        </table>
-    </div>
-    <div id="work_container" class="container">
-        <div onclick="closework()"><i class="fas fa-angle-right"></i></div>
-        <h1>Projects</h1>
-        <section>
-            <h2>Bank Nizwa Wallet</h2>
-            <p>
-                Convert user mobile into Digital wallet using Bank Nizwa Mobile Wallet application.
-                It allows user to transact in safe and secure way using your mobile wallet anytime anywhere. 
-                Customers of Bank Nizwa as well as unbanked customers can benefit from E-Wallet App.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;Flutter</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Dart</div>
+
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="avatar">
+                    <img src="https://lh3.googleusercontent.com/d/17ltnZadx7REeswE9YeTzL7nZ9JWLF-V3" alt="Rao Noman" class="avatar-img">
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-item active" data-page="launcher">
+                        <span class="nav-icon">&#128640;</span>
+                        <span class="nav-text">launcher</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="whoami">
+                        <span class="nav-icon">&#128100;</span>
+                        <span class="nav-text">whoami</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="work">
+                        <span class="nav-icon">&#128161;</span>
+                        <span class="nav-text">work</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="resume">
+                        <span class="nav-icon">&#128188;</span>
+                        <span class="nav-text">resume</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="contact">
+                        <span class="nav-icon">&#128231;</span>
+                        <span class="nav-text">contact</span>
+                    </a>
+                </nav>
             </div>
-            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=om.nizwa.wallet&hl=en';">Play Store</button>
-            <button class="btn_two" onclick="location.href='https://apps.apple.com/au/app/bank-nizwa-wallet/id1248765650';">App Store</button>
-        </section>
-        <section>
-            <h2>MIB Bank</h2>
-            <p>
-                Manage your MIB Bank accounts with ease using MIB Banks's official mobile banking application for both android & iOS.
-                User can easily do
-                Fingerprint authentication login,Transaction over a complete secure medium,Easy funds transafer,Mini statement,Account Statement
-                Pay Bill,Keep track of your net worth,Get transaction alerts,Schedule your transactions as desired,View and manage your transaction history
-                View and manage your login history,Internet Banking disabling option.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;Xamrain</div>
-                <div><i class="fas fa-circle"></i>&nbsp;C#</div>
+            <div class="sidebar-bottom">
+                <div class="social-links">
+                    <a href="https://github.com/raonoman" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rao-muhammad-noman-448745a1/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:rao.noman786@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.mcbislamicbank.mobileapp&hl=en';">Play Store</button>
-            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/mcb-islamic/id1219887038';">App Store</button>
-        </section>
-        <section>
-            <h2>SAIB Corporate Currency Card</h2>
-            <p>
-                The Saudi Investment Bank is pleased to introduce the first multi-currency corporate card application in the 
-                Kingdom of Saudi Arabia, which enables the cardholder to benefit from a unique set of card management services electronically.
-                With easy and convenient way of registration and access to the service.
-                Do not hesitate to request the service through your company or your employer today.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;Flutter</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Dart</div>
-            </div>
-            <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
-            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button>
-        </section>
-        <section>
-            <h2>Kony DBX Customisation</h2>
-            <p>
-                Convert user mobile into Digital wallet using Bank Nizwa Mobile Wallet application.
-                It allows user to transact in safe and secure way using your mobile wallet anytime anywhere. 
-                Customers of Bank Nizwa as well as unbanked customers can benefit from E-Wallet App.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;Kony</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Kony Fabric</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Kony DBX</div>
-                <div><i class="fas fa-circle"></i>&nbsp;JavaScript</div>
-            </div>
-            <!-- <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
-            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button> -->
-        </section>
-        <section>
-            <h2>PIA Mobile App </h2>
-            <p>
-                This application facilitate user to easily book a flight , generate PNR , award plus mileage , tracking of flight.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;iOS</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Swift</div>
-            </div>
-            <!-- <button class="btn_one" onclick="location.href='https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en';">Play Store</button>
-            <button class="btn_two" onclick="location.href='https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808';">App Store</button> -->
-        </section>
-    </div>
-    <div id="about_container" class="container">
-            <div onclick="closeabout()"><i class="fas fa-angle-left"></i></div>
-            <h1>About Me</h1>
-            <section>
-                <!-- <h2>About Me</h2> -->
-                <p>
-                    I am a passionate mobile developer with hands on experience on Flutter, Kony, React native, Xamrain and iOS native application development. I am a Kony Certified Mobile developer and also excel at solving technical problems using Dart, JavaScript and Swift. 
-                    I started my career in Software development in 2017 as a Software Intern in Pakistan International Airline, where i worked on iOS mobile development and PHP for web development. Later, I joined TPS Worlwide as a Software Engineer (Mobile Development) where i worked on different Financial client accross globe. 
-                </p>
-                <p>
-                    Currently I am a part of Xpert Digital (Temenos Patner) where i work as Software Engineer with different International banks. 
-                    Fintech is my Forte and have planned to progress my carrer in Fintect. I also am the co-founder of Flutter community Pakistan and actively take part in community events and talks.
-                    
-                </p>
-                <p>
-                    On a Personal level, I like travelling, music and cricket. I am very passionate about cricket and I have represented Pakistan Internationally at University and Club level.
-                </p>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Launcher Page -->
+            <section class="page active" id="launcher">
+                <div class="hero">
+                    <p class="hero-greeting">Hello World, I'm</p>
+                    <h1 class="hero-name">Rao Noman</h1>
+                    <p class="hero-tagline">From <span class="highlight">zero to millions</span> of users — I build the apps that scale.</p>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="8">8+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Live Apps</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">Millions</span>
+                            <span class="stat-label">Users Worldwide</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">AI</span>
+                            <span class="stat-label">Powered Apps</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-roles">
+                        <span class="role-tag">Lead Flutter Engineer</span>
+                        <span class="role-tag">Startup Apps Builder</span>
+                        <span class="role-tag">Mobile Consultant</span>
+                        <span class="role-tag">Flutter Speaker</span>
+                        <span class="role-tag">Co-Founder Flutter Pakistan</span>
+                    </div>
+                </div>
             </section>
-            <section>
-                <h2>skills</h2>
-                <p>
-                    Flutter , Kony , Reactnative , iOS , KonyFabric, KonyDBX , Swift, Dart , Javascript
-                </p>
+
+            <!-- Whoami Page -->
+            <section class="page" id="whoami">
+                <div class="page-content">
+                    <h2 class="section-title"><span class="prompt">$</span> whoami</h2>
+                    <div class="about-text">
+                        <p>I am a passionate mobile developer with hands on experience in <span class="highlight">Flutter, Kony, React Native, Xamarin</span> and <span class="highlight">iOS native</span> application development.</p>
+                        <p>I am a <span class="highlight">Kony Certified Mobile Developer</span> and excel at solving technical problems using Dart, JavaScript and Swift.</p>
+                        <p>I started my career in Software development in 2017 as a Software Intern in <span class="highlight">Pakistan International Airline</span>, where I worked on iOS mobile development and PHP for web development. Later, I joined <span class="highlight">TPS Worldwide</span> as a Software Engineer (Mobile Development) where I worked on different financial clients across the globe.</p>
+                        <p>Currently I am a part of <span class="highlight">Xpert Digital (Temenos Partner)</span> where I work as Software Engineer with different International banks. Fintech is my forte and I have planned to progress my career in Fintech.</p>
+                        <p>I am the co-founder of <span class="highlight">Flutter Community Pakistan</span> and actively take part in community events and talks.</p>
+                    </div>
+
+                    <h3 class="subsection-title"><span class="prompt">$</span> skills --list</h3>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fas fa-robot"></i> AI & Tools</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag featured">Claude AI</span>
+                            <span class="skill-tag featured">Cursor</span>
+                            <span class="skill-tag featured">AI Coding</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fab fa-apple"></i> Apple Ecosystem</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Swift</span>
+                            <span class="skill-tag">SwiftUI</span>
+                            <span class="skill-tag">iOS</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fas fa-mobile-alt"></i> Cross-Platform</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">Dart</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Xamarin</span>
+                            <span class="skill-tag">Android</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fas fa-university"></i> Fintech / Banking</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Temenos Infinity</span>
+                            <span class="skill-tag">Kony Fabric</span>
+                            <span class="skill-tag">Digital Wallets</span>
+                            <span class="skill-tag">Payment Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fas fa-rocket"></i> Publishing & DevOps</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">App Store Publishing</span>
+                            <span class="skill-tag">Play Store Publishing</span>
+                            <span class="skill-tag">CI/CD Mobile</span>
+                            <span class="skill-tag">Codemagic</span>
+                            <span class="skill-tag">Fastlane</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">Azure DevOps</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4 class="skills-label"><i class="fas fa-code"></i> Languages</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">PHP</span>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title"><span class="prompt">$</span> interests</h3>
+                    <p class="about-text">On a personal level, I like travelling, music and cricket. I am very passionate about cricket and I have represented Pakistan Internationally at University and Club level.</p>
+                </div>
             </section>
-        </div>
-          <div id="contact_container" class="container">
-            <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
-            <h1>Contact Me.</h1>
-            <section>
-                <!-- <h2>contact me</h2> -->
-                <section>
-                    <!-- <h2>About Me</h2> -->
-                    <p> Location : Karachi, Pakistan </p>
-                    <p> Email: rao.noman786@outlook.com </p>
-                    <p> Mobile No / WhatsApp: +923332256193 </p>
-                </section>
-                
-                <p>
-                    <form>
-                        <input type="text" placeholder="name" required>
-                        <input type="email" placeholder="email" required><br>
-                        <textarea placeholder="your message" required rows="5"></textarea><br>
-                        <button class="btn_one">send</button>
-                    </form> 
-                </p>
+
+            <!-- Work Page -->
+            <section class="page" id="work">
+                <div class="page-content">
+                    <h2 class="section-title"><span class="prompt">$</span> ls ~/projects</h2>
+
+                    <!-- 1. Xpence -->
+                    <div class="project-card featured-project">
+                        <div class="project-header">
+                            <h3>Xpence <span class="project-badge">Featured</span></h3>
+                            <div class="project-links">
+                                <a href="https://xpence.com/" target="_blank" rel="noopener" class="project-link">Website <i class="fas fa-globe"></i></a>
+                                <a href="https://play.google.com/store/apps/details?id=co.xpence.alpha2" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/xpence/id1499502623" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>Comprehensive business expense management platform for the GCC region. Issue physical & virtual corporate debit cards, track team spending in real-time, automate bookkeeping, manage invoicing and control individual spending limits - all from one dashboard.</p>
+                        <div class="project-preview">
+                            <a href="https://xpence.com/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://xpence.com/" alt="Xpence - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-external-link-alt"></i> Visit Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Fintech</span>
+                            <span>iOS</span>
+                            <span>Android</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Cence -->
+                    <div class="project-card featured-project">
+                        <div class="project-header">
+                            <h3>Cence <span class="project-badge">Featured</span></h3>
+                            <div class="project-links">
+                                <a href="https://cencepay.com/" target="_blank" rel="noopener" class="project-link">Website <i class="fas fa-globe"></i></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.cencepay" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/cence-ai-for-personal-finance/id6739706195" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>AI-powered fintech app that sits as an intelligence layer above spending and lifestyle decisions. Compare & manage multiple cards, discover personalized offers & cashback, get AI-driven card recommendations via Cencai chat, and locate nearby merchant deals on maps - all tailored to your lifestyle across the UAE.</p>
+                        <div class="project-preview">
+                            <a href="https://cencepay.com/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://cencepay.com/" alt="Cence - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-external-link-alt"></i> Visit Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>AI</span>
+                            <span>Fintech</span>
+                            <span>iOS</span>
+                            <span>Android</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Figg Wealth -->
+                    <div class="project-card featured-project">
+                        <div class="project-header">
+                            <h3>Figg Wealth <span class="project-badge">Featured</span></h3>
+                            <div class="project-links">
+                                <a href="https://figgwealth.com/" target="_blank" rel="noopener" class="project-link">Website <i class="fas fa-globe"></i></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.figg.android" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/figg-wealth/id6449435914" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>AI-driven wealth management platform that consolidates all your financial and physical assets in one app. Features AI Asset Valuer with camera-based instant valuations, portfolio insights, watchlist sentiment analysis from thousands of news sources, and end-to-end AES encryption - built by seasoned banking professionals.</p>
+                        <div class="project-preview">
+                            <a href="https://figgwealth.com/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://figgwealth.com/" alt="Figg Wealth - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-external-link-alt"></i> Visit Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>AI</span>
+                            <span>Fintech</span>
+                            <span>iOS</span>
+                            <span>Android</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Rock -->
+                    <div class="project-card featured-project">
+                        <div class="project-header">
+                            <h3>Rock <span class="project-badge">Featured</span></h3>
+                            <div class="project-links">
+                                <a href="https://www.rock.so/" target="_blank" rel="noopener" class="project-link">Website <i class="fas fa-globe"></i></a>
+                                <a href="https://play.google.com/store/apps/details?id=team.shiny.rock" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/app/id1496242752" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>All-in-one workspace that combines messaging, task management, notes, file sharing and video meetings into a single platform. Eliminates the need for multiple collaboration tools with 1000+ integrations via Zapier, plus native support for Google Drive, Slack, GitHub, Figma and more.</p>
+                        <div class="project-preview">
+                            <a href="https://www.rock.so/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.rock.so/" alt="Rock - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-external-link-alt"></i> Visit Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>iOS</span>
+                            <span>Android</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Temenos Infinity -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Temenos Infinity</h3>
+                        </div>
+                        <p>Customized and delivered Temenos Infinity (formerly Kony DBX) digital banking solutions for multiple international banks. Worked on end-to-end platform customization that took the product live for various financial institutions worldwide.</p>
+                        <div class="project-tech">
+                            <span>Temenos Infinity</span>
+                            <span>Kony Fabric</span>
+                            <span>JavaScript</span>
+                            <span>Fintech</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Bank Nizwa Wallet -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Bank Nizwa Wallet</h3>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=om.nizwa.wallet&hl=en" target="_blank" rel="noopener" class="project-link">Play Store <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://apps.apple.com/au/app/bank-nizwa-wallet/id1248765650" target="_blank" rel="noopener" class="project-link">App Store <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <p>Convert user mobile into Digital wallet using Bank Nizwa Mobile Wallet application. It allows user to transact in safe and secure way using your mobile wallet anytime anywhere.</p>
+                        <div class="project-preview">
+                            <a href="https://play.google.com/store/apps/details?id=om.nizwa.wallet&hl=en" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.banknizwa.om/" alt="Bank Nizwa - Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fab fa-google-play"></i> View on Play Store</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                        </div>
+                    </div>
+
+                    <!-- 7. MIB Bank -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>MIB Bank</h3>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.mcbislamicbank.mobileapp&hl=en" target="_blank" rel="noopener" class="project-link">Play Store <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://apps.apple.com/pk/app/mcb-islamic/id1219887038" target="_blank" rel="noopener" class="project-link">App Store <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <p>Manage your MIB Bank accounts with ease. Features include fingerprint authentication, secure transactions, funds transfer, mini statements, bill payments and transaction history management.</p>
+                        <div class="project-preview">
+                            <a href="https://play.google.com/store/apps/details?id=com.mcbislamicbank.mobileapp&hl=en" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.mcbislamicbank.com/" alt="MIB Bank - Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fab fa-google-play"></i> View on Play Store</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Xamarin</span>
+                            <span>C#</span>
+                        </div>
+                    </div>
+
+                    <!-- 8. JazzCash -->
+                    <div class="project-card featured-project">
+                        <div class="project-header">
+                            <h3>JazzCash <span class="project-badge">Featured</span></h3>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.techlogix.mobilinkcustomer&hl=en" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/jazzcash-your-mobile-account/id1224617688" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>Pakistan's largest mobile wallet trusted by millions. Seamless payments, money transfers, utility bill payments, mobile recharge and financial services - all from one app.</p>
+                        <div class="project-preview">
+                            <a href="https://www.jazzcash.com.pk/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.jazzcash.com.pk/" alt="JazzCash - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-external-link-alt"></i> Visit Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Fintech</span>
+                        </div>
+                    </div>
+
+                    <!-- 9. SAIB -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>SAIB Corporate Currency Card</h3>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en" target="_blank" rel="noopener" class="project-link">Play Store <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://apps.apple.com/pk/app/saib-corporate-currency-card/id1479004808" target="_blank" rel="noopener" class="project-link">App Store <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <p>The first multi-currency corporate card application in the Kingdom of Saudi Arabia, enabling cardholders to benefit from card management services electronically.</p>
+                        <div class="project-preview">
+                            <a href="https://play.google.com/store/apps/details?id=com.saib.mobile.corp.ccycard&hl=en" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.saib.com.sa/" alt="SAIB - Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fab fa-google-play"></i> View on Play Store</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                        </div>
+                    </div>
+
+                    <!-- 9. PIA -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>PIA Mobile App</h3>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.piac.thepiaapp.android&hl=en" target="_blank" rel="noopener" class="project-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/pia-app/id1143220222" target="_blank" rel="noopener" class="project-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                        <p>This application facilitates users to easily book flights, generate PNR, manage award plus mileage, and track flights.</p>
+                        <div class="project-preview">
+                            <a href="https://www.piac.com.pk/" target="_blank" rel="noopener">
+                                <img src="https://image.thum.io/get/width/800/crop/420/https://www.piac.com.pk/" alt="PIA - Website Preview" loading="lazy">
+                                <div class="preview-overlay"><i class="fas fa-plane"></i> Visit PIA Website</div>
+                            </a>
+                        </div>
+                        <div class="project-tech">
+                            <span>iOS</span>
+                            <span>Swift</span>
+                        </div>
+                    </div>
+                </div>
             </section>
-        </div>
-        <!-- <div id="footer">
-            made on earth by a human <br> <a href="https://imfunniee.github.io">imfunniee</a>
-        </div> -->
-    <script src="index.js" type="text/javascript"></script>
+
+            <!-- Resume Page -->
+            <section class="page" id="resume">
+                <div class="page-content">
+                    <h2 class="section-title"><span class="prompt">$</span> cat resume.md</h2>
+
+                    <h3 class="subsection-title">Experience</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Lead Flutter Engineer - Remote</h4>
+                                    <span class="timeline-date">Apr 2022 - Present</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://xpence.com/" target="_blank" rel="noopener">Xpence</a> <span class="company-location">MENA Region - Remote</span></p>
+                                <p>Leading mobile development for international clients including Xpence, Cence and Figg Wealth. Mobile application development, team management and end-to-end delivery of fintech products.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Flutter Instructor - Part Time</h4>
+                                    <span class="timeline-date">Jan 2023 - Present</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://www.iba.edu.pk/" target="_blank" rel="noopener">Institute of Business Administration (IBA)</a></p>
+                                <p>Teaching iOS development and mobile application development at one of Pakistan's top universities.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Flutter Engineer</h4>
+                                    <span class="timeline-date">Aug 2022 - Sep 2023</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://figgwealth.com/" target="_blank" rel="noopener">Figg Wealth</a> <span class="company-location">Dubai-based Startup - Remote</span></p>
+                                <p>Built AI-driven wealth management app using Flutter. Worked on asset valuation features, portfolio insights and real-time financial data integration.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Flutter Engineer</h4>
+                                    <span class="timeline-date">Feb 2021 - Apr 2022</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://www.rock.so/" target="_blank" rel="noopener">Rock</a> <span class="company-location">US-based Startup - Remote</span></p>
+                                <p>Built the Rock all-in-one workspace app using Flutter. iOS development, mobile application development and cross-platform delivery.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Senior Software Engineer - Flutter</h4>
+                                    <span class="timeline-date">Aug 2020 - Nov 2021</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://www.venturedive.com/" target="_blank" rel="noopener">VentureDive</a></p>
+                                <p>Senior Flutter Engineer leading mobile app development. Team management, mobile application development and mentoring junior developers.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Software Engineer - KONY Digital Banking</h4>
+                                    <span class="timeline-date">Oct 2019 - Aug 2020</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://xpertdigital.co/" target="_blank" rel="noopener">Xpert Digital</a></p>
+                                <p>Worked on Temenos Infinity (Kony DBX) digital banking customization for international banks. Mobile application development, API integration and banking solutions.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Software Engineer - Flutter</h4>
+                                    <span class="timeline-date">Nov 2017 - Oct 2019</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://www.tpsworldwide.com/" target="_blank" rel="noopener">TPS Worldwide</a></p>
+                                <p>Developed mobile banking applications for international financial clients. Worked on Bank Nizwa Wallet, MIB Bank, SAIB Corporate Currency Card using Flutter, Xamarin and Kony.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4>Software Engineering Trainee</h4>
+                                    <span class="timeline-date">Oct 2016 - Nov 2017</span>
+                                </div>
+                                <p class="timeline-company"><a href="https://www.piac.com.pk/" target="_blank" rel="noopener">Pakistan International Airlines (PIA)</a></p>
+                                <p>iOS mobile development and web development. Built the PIA mobile app using Swift.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Education</h3>
+                    <div class="cert-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <span><a href="https://www.ssuet.edu.pk/" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px dashed var(--accent);text-decoration:none;">Sir Syed University of Engineering & Technology (SSUET)</a></span><br>
+                            <span style="color:var(--text-secondary);font-size:13px;">Master's Degree, Computer Software Engineering | Dec 2018 - Dec 2021 | First Division</span>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Certifications</h3>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Kony Certified Mobile Developer (Dec 2019)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>SharePoint Development - Microsoft (Jan 2015)</span>
+                    </div>
+
+                    <h3 class="subsection-title">Community</h3>
+                    <div class="cert-item">
+                        <i class="fas fa-users"></i>
+                        <span>Co-Founder, <a href="https://flutterpk.github.io/" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px dashed var(--accent);text-decoration:none;">Flutter Pakistan</a></span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Flutter Instructor at IBA Karachi</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Page -->
+            <section class="page" id="contact">
+                <div class="page-content">
+                    <h2 class="section-title"><span class="prompt">$</span> ping rao.noman</h2>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Karachi, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:rao.noman786@outlook.com">rao.noman786@outlook.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Mobile / WhatsApp</h4>
+                                <a href="tel:+923332256193">+92 333 2256193</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h3 class="subsection-title"><span class="prompt">$</span> find --social</h3>
+                        <div class="social-grid">
+                            <a href="https://www.linkedin.com/in/rao-muhammad-noman-448745a1/" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://twitter.com/RaoNoma97840139" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="https://www.facebook.com/rao.noman1" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://github.com/raonoman" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
     <script src="particles.js"></script>
     <script src="app.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

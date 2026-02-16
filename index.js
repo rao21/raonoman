@@ -1,54 +1,75 @@
-function showabout(){
-    $("#about_container").css("display","inherit");
-    $("#about_container").addClass("animated slideInLeft");
-    setTimeout(function(){
-        $("#about_container").removeClass("animated slideInLeft");
-    },800);
-}
-function closeabout(){
-    $("#about_container").addClass("animated slideOutLeft");
-    setTimeout(function(){
-        $("#about_container").removeClass("animated slideOutLeft");
-        $("#about_container").css("display","none");
-    },800);
-}
-function showwork(){
-    $("#work_container").css("display","inherit");
-    $("#work_container").addClass("animated slideInRight");
-    setTimeout(function(){
-        $("#work_container").removeClass("animated slideInRight");
-    },800);
-}
-function closework(){
-    $("#work_container").addClass("animated slideOutRight");
-    setTimeout(function(){
-        $("#work_container").removeClass("animated slideOutRight");
-        $("#work_container").css("display","none");
-    },800);
-}
-function showcontact(){
-    $("#contact_container").css("display","inherit");
-    $("#contact_container").addClass("animated slideInUp");
-    setTimeout(function(){
-        $("#contact_container").removeClass("animated slideInUp");
-    },800);
-}
-function closecontact(){
-    $("#contact_container").addClass("animated slideOutDown");
-    setTimeout(function(){
-        $("#contact_container").removeClass("animated slideOutDown");
-        $("#contact_container").css("display","none");
-    },800);
-}
+// ===== Page Navigation =====
+document.addEventListener('DOMContentLoaded', function () {
+    var navItems = document.querySelectorAll('.nav-item');
+    var pages = document.querySelectorAll('.page');
 
-setTimeout(function(){
-    $("#loading").addClass("animated fadeOut");
-    setTimeout(function(){
-      $("#loading").removeClass("animated fadeOut");
-      $("#loading").css("display","none");
-      $("#box").css("display","none");
-      $("#about").removeClass("animated fadeIn");
-      $("#contact").removeClass("animated fadeIn");
-      $("#work").removeClass("animated fadeIn");
-    },1000);
-},1500);
+    navItems.forEach(function (item) {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+            var targetPage = this.getAttribute('data-page');
+
+            // Update active nav
+            navItems.forEach(function (nav) { nav.classList.remove('active'); });
+            this.classList.add('active');
+
+            // Show target page
+            pages.forEach(function (page) { page.classList.remove('active'); });
+            var target = document.getElementById(targetPage);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Close mobile menu
+            var sidebar = document.querySelector('.sidebar');
+            if (sidebar) sidebar.classList.remove('open');
+        });
+    });
+
+    // ===== Mobile Menu =====
+    var menuToggle = document.createElement('button');
+    menuToggle.className = 'menu-toggle';
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    menuToggle.setAttribute('aria-label', 'Toggle menu');
+    document.body.appendChild(menuToggle);
+
+    var sidebar = document.querySelector('.sidebar');
+
+    menuToggle.addEventListener('click', function () {
+        sidebar.classList.toggle('open');
+        var isOpen = sidebar.classList.contains('open');
+        menuToggle.innerHTML = isOpen
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768 &&
+            sidebar.classList.contains('open') &&
+            !sidebar.contains(e.target) &&
+            !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('open');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
+    // ===== Typing Effect for Hero =====
+    var heroName = document.querySelector('.hero-name');
+    if (heroName) {
+        var text = heroName.textContent;
+        heroName.textContent = '';
+        heroName.style.borderRight = '3px solid var(--accent)';
+        var i = 0;
+        var typeInterval = setInterval(function () {
+            heroName.textContent += text.charAt(i);
+            i++;
+            if (i >= text.length) {
+                clearInterval(typeInterval);
+                // Blink cursor then remove
+                setTimeout(function () {
+                    heroName.style.borderRight = 'none';
+                }, 2000);
+            }
+        }, 80);
+    }
+});
