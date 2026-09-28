@@ -45,7 +45,7 @@ export const talks: Talk[] = [
   },
   {
     kind: 'panel',
-    month: null,
+    month: 'MAR',
     year: 2022,
     role: 'Panel speaker',
     title: 'Flutter Forward Extended Karachi',

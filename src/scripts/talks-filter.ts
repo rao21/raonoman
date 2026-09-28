@@ -6,7 +6,11 @@ if (tf) {
   tf.addEventListener('click', (e) => {
     const b = (e.target as HTMLElement).closest('button');
     if (!b) return;
-    Array.from(tf.children).forEach((x) => x.classList.toggle('on', x === b));
+    Array.from(tf.children).forEach((x) => {
+      const isActive = x === b;
+      x.classList.toggle('on', isActive);
+      x.setAttribute('aria-pressed', String(isActive));
+    });
     const f = (b.getAttribute('data-f') || 'all').split(' ');
     document.querySelectorAll<HTMLElement>('.ticket').forEach((t) => {
       const show = f[0] === 'all' || f.includes(t.getAttribute('data-kind') || '');

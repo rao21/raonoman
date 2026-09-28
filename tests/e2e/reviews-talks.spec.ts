@@ -12,6 +12,8 @@ test('talk filters', async ({ page }) => {
   await expect(page.locator('#speaking .ticket:visible')).toHaveCount(10);
   await page.getByRole('button', { name: 'Panels' }).click();
   await expect(page.locator('#speaking .ticket:visible')).toHaveCount(2);
+  await expect(page.getByRole('button', { name: 'Panels' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'false');
   await page.getByRole('button', { name: 'Mentor & judge' }).click();
   await expect(page.locator('#speaking .ticket:visible')).toHaveCount(3);
   await page.getByRole('button', { name: 'All' }).click();

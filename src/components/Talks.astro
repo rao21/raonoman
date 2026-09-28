@@ -47,7 +47,7 @@ const filters: { label: string; f: string }[] = [
   </div>
   <div class="tfilter" role="toolbar" aria-label="Filter talks">
     {filters.map((f, i) => (
-      <button type="button" class={i === 0 ? 'on' : ''} data-f={f.f}>{f.label}</button>
+      <button type="button" class={i === 0 ? 'on' : ''} data-f={f.f} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
     ))}
   </div>
   <div class="tickets" id="tickets">
