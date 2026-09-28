@@ -1,8 +1,25 @@
-import { nextSkin, readSkin, saveSkin } from '../lib/skins';
+import { SKINS, nextSkin, readSkin, saveSkin, type Skin } from '../lib/skins';
+import { withBase } from '../lib/base';
 
 const root = document.documentElement;
 const reloadBtn = document.getElementById('btnReload');
 const toastEl = document.getElementById('toast');
+
+// Private modes and blocked site data can make the localStorage getter itself throw.
+function safeStorage(): Storage | null {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+// The skin on <html> is the source of truth; storage only seeds it on load.
+function currentSkin(): Skin {
+  const attr = root.dataset.skin as Skin | undefined;
+  if (attr && SKINS.includes(attr)) return attr;
+  return readSkin(safeStorage(), window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
 
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
 function toast(msg: string) {
@@ -14,9 +31,7 @@ function toast(msg: string) {
 }
 
 reloadBtn?.addEventListener('click', () => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const current = readSkin(localStorage, prefersDark);
-  const skin = nextSkin(current);
+  const skin = nextSkin(currentSkin());
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const apply = () => root.setAttribute('data-skin', skin);
   const start = performance.now();
@@ -39,12 +54,14 @@ reloadBtn?.addEventListener('click', () => {
     apply();
   }
 
-  saveSkin(localStorage, skin);
+  saveSkin(safeStorage(), skin);
   const ms = Math.round(performance.now() - start) || Math.round(150 + Math.random() * 120);
   const n = document.querySelectorAll('.w').length;
   toast(`⚡ Reloaded ${n} widgets in ${ms}ms · theme: ${skin}`);
 });
 
+// Only the home page has the boot overlay to replay; elsewhere Rebuild goes home.
 document.getElementById('btnRebuild')?.addEventListener('click', () => {
-  window.dispatchEvent(new CustomEvent('hotreload:rebuild'));
+  if (document.getElementById('boot')) window.dispatchEvent(new CustomEvent('hotreload:rebuild'));
+  else window.location.assign(withBase('/'));
 });
