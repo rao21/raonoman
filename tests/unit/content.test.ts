@@ -22,8 +22,17 @@ describe('placeholder guard', () => {
 
 describe('content rules', () => {
   const text = JSON.stringify(all);
-  it('never says Karachi outside the IBA name', () => {
-    expect(text.replace(/\(IBA\), Karachi/g, '').replace(/Asia\/Karachi/g, '')).not.toMatch(/Karachi/);
+  it('never says Karachi outside the IBA name and known proper nouns', () => {
+    const ALLOWED = [
+      /\(IBA\), Karachi/g,
+      /Asia\/Karachi/g,
+      /Flutter Karachi/g,
+      /Flutter Forward Extended Karachi/g,
+      /Flutter Festival Karachi/g,
+      /Google I\/O Extended Karachi/g,
+    ];
+    const scrubbed = ALLOWED.reduce((t, r) => t.replace(r, ''), text);
+    expect(scrubbed).not.toMatch(/Karachi/);
   });
   it('has no recommender names', () => {
     for (const n of ['Waleed', 'Burhanuddin', 'Usman', 'Taha', 'Ambreen']) expect(JSON.stringify(testimonials)).not.toContain(n);
