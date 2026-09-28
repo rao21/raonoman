@@ -37,4 +37,7 @@ test('404 page', async ({ page }) => {
   const res = await page.goto('./does-not-exist');
   await expect(page.getByRole('heading', { name: 'Hot reload failed.' })).toBeVisible();
   expect(res?.status()).toBe(404);
+  await expect(page.locator('meta[name=robots]')).toHaveAttribute('content', 'noindex');
+  await expect(page.locator('link[rel=canonical]')).toHaveCount(0);
+  await expect(page.locator('meta[property="og:url"]')).toHaveCount(0);
 });

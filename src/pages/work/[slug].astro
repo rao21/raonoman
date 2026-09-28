@@ -15,13 +15,15 @@ export function getStaticPaths() {
 
 const { c } = Astro.props;
 
-const pageUrl = c.website ?? new URL(withBase('/work/' + c.slug), Astro.site).href;
+const path = `/work/${c.slug}/`;
+const pageUrl = new URL(withBase(path), Astro.site).href;
 const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: c.name,
     url: pageUrl,
+    ...(c.website ? { sameAs: c.website } : {}),
     creator: { '@type': 'Person', name: site.fullName },
     about: c.client,
     ...(c.screenshots.length > 0 ? { image: new URL(c.screenshots[0].src, Astro.site).href } : {}),
@@ -29,7 +31,7 @@ const jsonLd = [
 ];
 ---
 
-<Base title={`${c.name} — case study · ${site.name}`} description={c.client} path={`/work/${c.slug}`} jsonLd={jsonLd}>
+<Base title={`${c.name} — case study · ${site.name}`} description={c.client} path={path} jsonLd={jsonLd}>
   <Nav />
   <main id="main">
     <section class="sec wrap case-page">
