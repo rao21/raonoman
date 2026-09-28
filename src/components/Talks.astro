@@ -1,0 +1,78 @@
+---
+import SectionHead from './SectionHead.astro';
+import { talks, community } from '../content/talks';
+import { site } from '../content/site';
+import '../styles/talks.css';
+
+const activityUrl = `${site.linkedin}recent-activity/all/`;
+
+const speakerCount = talks.filter((t) => t.kind === 'speaker').length;
+const panelCount = talks.filter((t) => t.kind === 'panel').length;
+const mentorJudgeCount = talks.filter((t) => t.kind === 'mentor' || t.kind === 'judge').length;
+const trainerCount = talks.filter((t) => t.kind === 'trainer').length;
+
+const filters: { label: string; f: string }[] = [
+  { label: 'All', f: 'all' },
+  { label: 'Talks', f: 'speaker' },
+  { label: 'Panels', f: 'panel' },
+  { label: 'Mentor & judge', f: 'mentor judge' },
+  { label: 'Workshops', f: 'trainer' },
+];
+---
+
+<section class="sec wrap" id="speaking">
+  <SectionHead
+    codeKeyword="await"
+    code=" community.giveBack();"
+    title="Speaking & community"
+    lede="Ten talks, panels, workshops and mentoring roles since 2022, plus teaching and community work in Pakistan."
+  />
+  <div class="comm">
+    {community.map((c) => (
+      <a class="w build commcard" data-w="ListTile" href={c.href} target="_blank" rel="noopener">
+        <div class="skel"></div>
+        <span class="ic">{c.eyebrow}</span>
+        <h3>{c.title} <span class="arr">↗</span></h3>
+        <p>{c.body}</p>
+      </a>
+    ))}
+  </div>
+  <h3 class="more-title">Talks, panels &amp; mentoring</h3>
+  <div class="tstats">
+    <div><b>{talks.length}</b><span>stages since 2022</span></div>
+    <div><b>{speakerCount}</b><span>talks</span></div>
+    <div><b>{panelCount}</b><span>panels</span></div>
+    <div><b>{mentorJudgeCount}</b><span>mentor &amp; judge roles</span></div>
+    <div><b>{trainerCount}</b><span>workshop{trainerCount === 1 ? '' : 's'}</span></div>
+  </div>
+  <div class="tfilter" role="toolbar" aria-label="Filter talks">
+    {filters.map((f, i) => (
+      <button type="button" class={i === 0 ? 'on' : ''} data-f={f.f}>{f.label}</button>
+    ))}
+  </div>
+  <div class="tickets" id="tickets">
+    {talks.map((t) => (
+      <article class="w build ticket" data-kind={t.kind} data-w="Card" style={`--tc:${t.accent}`}>
+        <div class="skel"></div>
+        <div class="stub">
+          <span class="mon">{t.month || ' '}</span>
+          <span class="yr">{t.year}</span>
+        </div>
+        <div class="tmain">
+          <span class="trole">{t.role}</span>
+          <h4>{t.title}</h4>
+          <div class="torg">{t.org}</div>
+          <p>{t.blurb}</p>
+          {t.note && <p class="tnote">{t.note}</p>}
+        </div>
+      </article>
+    ))}
+  </div>
+  <a class="btn" href={activityUrl} target="_blank" rel="noopener" style="margin-top:18px">
+    See the posts on LinkedIn ↗
+  </a>
+</section>
+
+<script>
+  import '../scripts/talks-filter';
+</script>

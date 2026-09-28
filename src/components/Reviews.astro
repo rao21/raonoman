@@ -1,0 +1,60 @@
+---
+import SectionHead from './SectionHead.astro';
+import { testimonials } from '../content/testimonials';
+import { site } from '../content/site';
+import '../styles/reviews.css';
+
+const recommendationsUrl = `${site.linkedin}details/recommendations/`;
+
+function quoteParts(quote: string, highlight?: string): { pre: string; mark: string | null; post: string } {
+  if (!highlight) return { pre: quote, mark: null, post: '' };
+  const i = quote.indexOf(highlight);
+  if (i < 0) return { pre: quote, mark: null, post: '' };
+  return { pre: quote.slice(0, i), mark: highlight, post: quote.slice(i + highlight.length) };
+}
+---
+
+<section class="sec wrap" id="reviews">
+  <SectionHead
+    codeKeyword="final"
+    code=" reviews = linkedIn.recommendations;"
+    title="What my clients and peers say"
+    lede="Straight from my LinkedIn recommendations, from managers, teammates and two Google Developer Experts."
+  />
+  <div class="revs">
+    {testimonials.map((t) => {
+      const slim = !t.date;
+      const { pre, mark, post } = quoteParts(t.quote, t.highlight);
+      return (
+        <figure class={`w build rev${t.featured ? ' rev-feat' : ''}${slim ? ' rev-slim' : ''}`} data-w="Testimonial">
+          <div class="skel"></div>
+          {!slim && <span class="qmark" aria-hidden="true">&ldquo;</span>}
+          <blockquote>
+            {slim ? (
+              <>&ldquo;{t.quote}&rdquo;</>
+            ) : mark ? (
+              <>{pre}<mark>{mark}</mark>{post}</>
+            ) : (
+              t.quote
+            )}
+          </blockquote>
+          <figcaption>
+            <span class={`av${slim ? ' anon' : ''}`} aria-hidden="true">{slim ? '★' : '“'}</span>
+            <span class="who">
+              <b>{t.role}</b>
+              <small>
+                {t.relation}
+                {t.date && ` · ${t.date}`}
+                {' · '}
+                <a href={recommendationsUrl} target="_blank" rel="noopener">LinkedIn ↗</a>
+              </small>
+            </span>
+          </figcaption>
+        </figure>
+      );
+    })}
+  </div>
+  <a class="btn" href={recommendationsUrl} target="_blank" rel="noopener" style="margin-top:18px">
+    Read all recommendations on LinkedIn ↗
+  </a>
+</section>
