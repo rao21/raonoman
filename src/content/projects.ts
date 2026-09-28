@@ -108,7 +108,7 @@ export const caseStudies: CaseStudy[] = [
     website: 'https://www.jazzcash.com.pk/',
     appStore: 'https://apps.apple.com/us/app/jazzcash-your-mobile-account/id1224617688',
     googlePlay: 'https://play.google.com/store/apps/details?id=com.techlogix.mobilinkcustomer',
-    client: "Pakistan's largest mobile wallet: payments, transfers, bill payments and mobile top-ups.",
+    client: 'A nationwide mobile wallet app: payments, transfers, bill payments and mobile top-ups.',
     role: "Worked on the Flutter app as one of VentureDive's client projects.",
     result: "Pakistan's largest mobile wallet, used by millions of people.",
     screenshots: [jazzcash1, jazzcash2, jazzcash3],
