@@ -41,3 +41,36 @@ test('404 page', async ({ page }) => {
   await expect(page.locator('link[rel=canonical]')).toHaveCount(0);
   await expect(page.locator('meta[property="og:url"]')).toHaveCount(0);
 });
+
+test('the dev toolbar never covers the footer text', async ({ page }) => {
+  await page.goto('./');
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  const text = await page.locator('footer span').first().boundingBox();
+  const bar = await page.locator('.devbar').boundingBox();
+  expect(text!.y + text!.height).toBeLessThanOrEqual(bar!.y);
+});
+
+test('skip link is legible when focused', async ({ page }) => {
+  await page.goto('./');
+  await page.keyboard.press('Tab');
+  const skip = page.locator('.skip');
+  await expect(skip).toBeFocused();
+  const s = await skip.evaluate(el => {
+    const c = getComputedStyle(el);
+    const nav = getComputedStyle(document.querySelector('.top')!);
+    return { bg: c.backgroundColor, pad: c.paddingTop, z: Number(c.zIndex), navZ: Number(nav.zIndex), radius: c.borderTopLeftRadius };
+  });
+  expect(s.bg).not.toBe('rgba(0, 0, 0, 0)');
+  expect(s.pad).not.toBe('0px');
+  expect(s.radius).not.toBe('0px');
+  expect(s.z).toBeGreaterThan(s.navZ);
+});
+
+test('app marquee pauses while a pill has keyboard focus', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('./');
+  const track = page.locator('.marquee2');
+  await expect(track).toHaveCSS('animation-play-state', 'running');
+  await page.locator('.marquee2 a').first().focus();
+  await expect(track).toHaveCSS('animation-play-state', 'paused');
+});

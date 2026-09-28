@@ -14,7 +14,7 @@
 .tree .car{font:500 12px/1 "Geist Mono Variable",monospace; color:var(--muted); transition:transform .2s; display:inline-block}
 .tree details[open] .car{transform:rotate(90deg)}
 .tree .role{font-weight:600; letter-spacing:-.01em}
-.tree .role small{font:500 13px/1.3 Geist,sans-serif; color:var(--muted); margin-left:0}
+.tree .role small{font:500 13px/1.3 'Geist Variable',sans-serif; color:var(--muted); margin-left:0}
 .tree .when{font:500 12px/1 "Geist Mono Variable",monospace; color:var(--muted); white-space:nowrap}
 .tree .body{color:var(--muted); margin:0}
 
@@ -23,7 +23,7 @@
 .clogo img{width:100%; height:100%; object-fit:contain; padding:4px}
 .clogo.wide{width:64px}
 .clogo.wide img{padding:3px}
-.clogo.mono{font:700 13px/1 Geist,sans-serif; letter-spacing:-.02em; border:0}
+.clogo.mono{font:700 13px/1 'Geist Variable',sans-serif; letter-spacing:-.02em; border:0}
 .tree summary:hover .clogo{transform:scale(1.08) rotate(-3deg)}
 .tree .role{display:flex; flex-direction:column; gap:2px}
 

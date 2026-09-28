@@ -12,7 +12,7 @@
 .who{display:grid; gap:2px; min-width:0}
 .who b{font-weight:600}
 .who span{font-size:13px; color:var(--muted)}
-.who small{font:500 11px/1.5 "Geist Mono",monospace; color:var(--muted)}
+.who small{font:500 11px/1.5 'Geist Mono Variable',monospace; color:var(--muted)}
 .who a{color:inherit}
 
 .rev-slim{grid-column:1/-1; flex-direction:row; align-items:center; justify-content:space-between; gap:24px; padding:22px 28px}

@@ -9,7 +9,7 @@ a{color:inherit}
 [hidden]{display:none !important}
 
 .skip{position:absolute;left:-999px}
-.skip:focus{left:16px;top:16px;z-index:100}
+.skip:focus{left:16px;top:16px;z-index:100;background:var(--tile);color:var(--ink);padding:10px 16px;border-radius:10px;border:1px solid var(--border)}
 
 /* ---------- tiles (every "widget") ---------- */
 .w{position:relative; background:var(--tile); border:1px solid var(--border); border-radius:18px; transition:background .4s,border-color .4s,transform .25s ease,box-shadow .25s ease}
@@ -47,7 +47,7 @@ section.sec{padding-block:clamp(80px,10vw,130px) 0}
 /* ---------- top nav ---------- */
 .top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:color-mix(in srgb,var(--bg) 78%,transparent); border-bottom:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
 .top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
-.logo{font:600 17px/1 Geist,sans-serif; letter-spacing:-.02em; text-decoration:none; display:flex; align-items:center; gap:10px}
+.logo{font:600 17px/1 'Geist Variable',sans-serif; letter-spacing:-.02em; text-decoration:none; display:flex; align-items:center; gap:10px}
 .logo i{width:10px; height:10px; border-radius:3px; background:var(--accent); transition:background .4s}
 .top ul{display:flex; gap:24px; white-space:nowrap; list-style:none; margin:0; padding:0; font-size:14px}
 .top ul a{text-decoration:none; color:var(--muted)} .top ul a:hover{color:var(--ink)}
@@ -65,7 +65,7 @@ section.sec{padding-block:clamp(80px,10vw,130px) 0}
 
 /* ---------- dev toolbar ---------- */
 .devbar{position:fixed; left:50%; bottom:calc(16px + env(safe-area-inset-bottom,0px)); translate:-50% 0; z-index:30; display:flex; gap:4px; padding:5px; border-radius:999px; background:#111214; border:1px solid #2A2C31; box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
-.devbar button{font:500 13px/1 Geist,sans-serif; color:#D8D9DD; background:transparent; border:0; border-radius:999px; padding:10px 14px; cursor:pointer; white-space:nowrap}
+.devbar button{font:500 13px/1 'Geist Variable',sans-serif; color:#D8D9DD; background:transparent; border:0; border-radius:999px; padding:10px 14px; cursor:pointer; white-space:nowrap}
 .devbar button:hover{background:#1E2024}
 .devbar button[aria-pressed="true"]{background:#E8E9EC; color:#111}
 .devbar .bolt{color:#FFD43B}
@@ -73,6 +73,8 @@ section.sec{padding-block:clamp(80px,10vw,130px) 0}
 .toast{position:fixed; left:50%; bottom:calc(76px + env(safe-area-inset-bottom,0px)); translate:-50% 10px; z-index:30; font:500 12px/1 'Geist Mono Variable',monospace; color:#E8E9EC; background:#111214; border:1px solid #2A2C31; padding:10px 14px; border-radius:999px; opacity:0; transition:opacity .3s, translate .3s; pointer-events:none; white-space:nowrap}
 .toast.on{opacity:1; translate:-50% 0}
 
+/* room for the fixed dev toolbar so it never covers the footer */
+footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; border-top:1px solid var(--border); padding-top:22px}
 
 @media (prefers-reduced-motion: reduce){
