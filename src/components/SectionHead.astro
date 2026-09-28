@@ -1,0 +1,17 @@
+---
+interface Props {
+  id?: string;
+  code: string;
+  codeKeyword: string;
+  title: string;
+  lede?: string;
+}
+
+const { id, code, codeKeyword, title, lede } = Astro.props;
+---
+
+<div class="sec-head" id={id}>
+  <span class="code-label"><span class="k">{codeKeyword}</span>{code}</span>
+  <h2>{title}</h2>
+  {lede && <p>{lede}</p>}
+</div>

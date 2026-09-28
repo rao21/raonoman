@@ -1,0 +1,35 @@
+/* problems */
+.probs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+@media (max-width:760px){ .probs{grid-template-columns:1fr} }
+.prob{padding:26px; display:grid; gap:10px; align-content:start}
+.prob h3{margin:0; font-family:var(--head); font-weight:var(--headw); letter-spacing:var(--headls); font-size:clamp(22px,2.4vw,30px); line-height:1.1}
+.prob p{margin:0; color:var(--muted)}
+.prob-ai{grid-column:1/-1; background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--tile)),var(--tile) 60%)}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px}
+@media (max-width:1100px){ .svc{grid-template-columns:repeat(2,minmax(0,1fr))} .svc > :last-child{grid-column:1/-1} }
+@media (max-width:540px){ .svc{grid-template-columns:1fr} }
+.svc .w{padding:24px; display:grid; gap:10px; align-content:start}
+.svc .ic{font:500 12px/1 'Geist Mono Variable',monospace; color:var(--accent)}
+.svc h3{margin:0; font-size:20px; letter-spacing:-.02em; font-weight:600}
+.svc p{margin:0; color:var(--muted); font-size:15px}
+.svc dl{display:grid; gap:8px; margin:6px 0 0; padding-top:12px; border-top:1px solid var(--border)}
+.svc dl div{display:grid; gap:2px}
+.svc dt{font:500 11px/1 'Geist Mono Variable',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.06em}
+.svc dd{margin:0; font-size:14px}
+
+/* process */
+.steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; counter-reset:s}
+@media (max-width:980px){ .steps{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:540px){ .steps{grid-template-columns:1fr} }
+.steps li{padding:24px; display:grid; gap:10px; align-content:start}
+.steps h3{margin:0; font-size:20px; font-weight:600; letter-spacing:-.02em}
+.steps p{margin:0; color:var(--muted); font-size:15px}
+.steps .ic,.why .ic{font:500 12px/1 'Geist Mono Variable',monospace; color:var(--accent)}
+
+/* why */
+.why{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+@media (max-width:860px){ .why{grid-template-columns:1fr} }
+.why .w{padding:24px; display:grid; gap:10px; align-content:start}
+.why p{margin:0}

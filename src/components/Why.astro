@@ -1,0 +1,18 @@
+---
+import SectionHead from './SectionHead.astro';
+import { reasons } from '../content/why';
+import '../styles/sections.css';
+---
+
+<section class="sec wrap" id="why">
+  <SectionHead codeKeyword="final" code=" reasons = [experience, fintech, community];" title="Why teams hire me" />
+  <div class="why">
+    {reasons.map((r) => (
+      <div class="w build" data-w="Card">
+        <div class="skel"></div>
+        <span class="ic">{r.eyebrow}</span>
+        <p>{r.body}</p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import SectionHead from './SectionHead.astro';
+import { problems } from '../content/problems';
+import '../styles/sections.css';
+---
+
+<section class="sec wrap" id="problems">
+  <SectionHead codeKeyword="if" code=" (soundsFamiliar) callRao();" title="Sound familiar?" lede="Most teams call me when one of these is happening." />
+  <div class="probs">
+    {problems.map((p) => (
+      <div class={`w build prob${p.featured ? ' prob-ai' : ''}`} data-w="ListTile">
+        <div class="skel"></div>
+        <h3>{p.quote}</h3>
+        <p>{p.answer}</p>
+      </div>
+    ))}
+  </div>
+</section>
