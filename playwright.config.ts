@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: 'tests/e2e',
   webServer: {
-    command: 'PUBLIC_WEB3FORMS_KEY=test-key npm run build && npm run preview -- --port 4322',
+    command: 'PUBLIC_WEB3FORMS_KEY=test-key PUBLIC_DEV_TOOLS=true npm run build && npm run preview -- --port 4322',
     url: 'http://localhost:4322/raonoman/',
     reuseExistingServer: false,
     timeout: 120_000,
