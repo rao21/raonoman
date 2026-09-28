@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import MoreApps from './MoreApps.astro';
+import { caseStudies } from '../content/projects';
+import { withBase } from '../lib/base';
+import '../styles/work.css';
+---
+
+<section class="sec wrap" id="work">
+  <SectionHead
+    codeKeyword="Widget"
+    code=" build(context) => CaseStudies();"
+    title="Case studies"
+    lede="What the client needed and what I did. Click any app to visit its website."
+  />
+  <div class="cases">
+    {caseStudies.map((c) => (
+      <article class="w case build" data-w="Card" style={`--c:${c.accent}`}>
+        <div class="skel"></div>
+        {c.website ? (
+          <a class="shot" href={c.website} target="_blank" rel="noopener" aria-label={`Visit the ${c.name} website`}>
+            {c.screenshots.map((shot, i) => (
+              <Image class="ss" src={shot} widths={[200, 300]} loading="lazy" alt={`${c.name} app screenshot ${i + 1}`} />
+            ))}
+            <span class="visit">Visit website ↗</span>
+          </a>
+        ) : (
+          <div class="shot">
+            <span class="note">screens on request</span>
+            <div class="phone"><div class="pc"></div><div class="pl"></div><div class="pl s"></div><div class="pl"></div></div>
+          </div>
+        )}
+        <div class="cbody">
+          <div>
+            <h3>
+              {c.website ? (
+                <a href={c.website} target="_blank" rel="noopener">{c.name} <span class="arr">↗</span></a>
+              ) : (
+                c.name
+              )}
+            </h3>
+            <div class="meta">{c.meta}</div>
+          </div>
+          <dl class="csd">
+            <div><dt>Client</dt><dd>{c.client}</dd></div>
+            <div><dt>My role</dt><dd>{c.role}</dd></div>
+            {c.result && <div><dt>Result</dt><dd>{c.result}</dd></div>}
+          </dl>
+          <div class="links">
+            {c.website ? (
+              <a class="chip" href={c.website} target="_blank" rel="noopener">Website ↗</a>
+            ) : (
+              <span class="chip muted">No longer on the stores</span>
+            )}
+            {c.appStore && <a class="chip" href={c.appStore} target="_blank" rel="noopener">App Store ↗</a>}
+            {c.googlePlay && <a class="chip" href={c.googlePlay} target="_blank" rel="noopener">Google Play ↗</a>}
+            <a class="chip" href={withBase('/work/' + c.slug + '/')}>Read the case study →</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+  <MoreApps />
+</section>

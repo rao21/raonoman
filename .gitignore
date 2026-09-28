@@ -1,0 +1,11 @@
+# local-only material, never committed
+docs/
+research_notes/
+reports/
+/assets/
+# build
+node_modules/
+dist/
+.astro/
+test-results/
+playwright-report/

@@ -1,0 +1,30 @@
+---
+import { withBase } from '../lib/base';
+
+const links: [string, string][] = [
+  ['How I help', '#services'],
+  ['Work', '#work'],
+  ['Clients say', '#reviews'],
+  ['Talks', '#speaking'],
+  ['Toolkit', '#stack'],
+  ['How it works', '#process'],
+];
+---
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href={withBase('/')}><i></i>rao noman</a>
+    <ul>
+      {
+        links.map(([label, href]) => (
+          <li>
+            <a href={withBase(href)}>{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="btn primary" href={withBase('#contact')}>Let's talk →</a>
+    <button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+<script>import '../scripts/menu';</script>

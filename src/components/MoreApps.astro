@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import { moreApps } from '../content/projects';
+---
+
+<h3 class="more-title">More apps I've built</h3>
+<div class="more">
+  {moreApps.map((a) => (
+    <article class="w mcard build" data-w="Card">
+      <div class="skel"></div>
+      <a class="mvis" href={a.website} target="_blank" rel="noopener" aria-label={`Visit the ${a.name} website`}>
+        {a.screenshots.length > 0 ? (
+          a.screenshots.map((shot, i) => (
+            <Image class="ms" src={shot} widths={[200, 300]} loading="lazy" alt={`${a.name} screenshot ${i + 1}`} />
+          ))
+        ) : (
+          <span class="mark">{a.mark}</span>
+        )}
+      </a>
+      <h4><a href={a.website} target="_blank" rel="noopener">{a.name} <span class="arr">↗</span></a></h4>
+      <div class="meta">{a.meta}</div>
+      <p>{a.description}</p>
+      <div class="links">
+        {a.appStore && <a class="chip" href={a.appStore} target="_blank" rel="noopener">App Store ↗</a>}
+        {a.googlePlay && <a class="chip" href={a.googlePlay} target="_blank" rel="noopener">Google Play ↗</a>}
+      </div>
+    </article>
+  ))}
+</div>

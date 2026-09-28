@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import DevBar from '../../components/DevBar.astro';
+import Footer from '../../components/Footer.astro';
+import { caseStudies } from '../../content/projects';
+import { site } from '../../content/site';
+import { withBase } from '../../lib/base';
+import '../../styles/work.css';
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+
+const { c } = Astro.props;
+
+const path = `/work/${c.slug}/`;
+const pageUrl = new URL(withBase(path), Astro.site).href;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: c.name,
+    url: pageUrl,
+    ...(c.website ? { sameAs: c.website } : {}),
+    creator: { '@type': 'Person', name: site.fullName },
+    about: c.client,
+    ...(c.screenshots.length > 0 ? { image: new URL(c.screenshots[0].src, Astro.site).href } : {}),
+  },
+];
+---
+
+<Base title={`${c.name} — case study · ${site.name}`} description={c.client} path={path} jsonLd={jsonLd}>
+  <Nav />
+  <main id="main">
+    <section class="sec wrap case-page">
+      <a class="back" href={withBase('#work')}>← Back to case studies</a>
+      <header>
+        <h1 style={`--c:${c.accent}`}>{c.name}</h1>
+        <div class="meta">{c.meta}</div>
+      </header>
+      {c.screenshots.length > 0 ? (
+        <div class="big-shot" style={`--c:${c.accent}`}>
+          {c.screenshots.map((shot, i) => (
+            <Image class="ss" src={shot} widths={[200, 300]} loading="lazy" alt={`${c.name} app screenshot ${i + 1}`} />
+          ))}
+        </div>
+      ) : (
+        <div class="big-shot" style={`--c:${c.accent}`}>
+          <span class="note">screens on request</span>
+          <div class="phone"><div class="pc"></div><div class="pl"></div><div class="pl s"></div><div class="pl"></div></div>
+        </div>
+      )}
+      <dl class="csd">
+        <div><dt>Client</dt><dd>{c.client}</dd></div>
+        <div><dt>My role</dt><dd>{c.role}</dd></div>
+        {c.result && <div><dt>Result</dt><dd>{c.result}</dd></div>}
+      </dl>
+      <div class="links">
+        {c.website ? (
+          <a class="chip" href={c.website} target="_blank" rel="noopener">Website ↗</a>
+        ) : (
+          <span class="chip muted">No longer on the stores</span>
+        )}
+        {c.appStore && <a class="chip" href={c.appStore} target="_blank" rel="noopener">App Store ↗</a>}
+        {c.googlePlay && <a class="chip" href={c.googlePlay} target="_blank" rel="noopener">Google Play ↗</a>}
+      </div>
+      <div class="w cta">
+        <h2>Want an app like this?</h2>
+        <p>Let's talk about your project.</p>
+        <a class="btn primary" href={withBase('#contact')}>Book a free 30-min call →</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <DevBar />
+</Base>

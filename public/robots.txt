@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rao21.github.io/raonoman/sitemap-index.xml

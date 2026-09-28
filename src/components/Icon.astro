@@ -1,0 +1,13 @@
+---
+import { getIcon, brandColor } from '../lib/icons';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const icon = getIcon(slug);
+const color = brandColor(icon.hex);
+---
+
+<svg viewBox="0 0 24 24" aria-hidden="true" style={`--b:${color}`}><path d={icon.path}></path></svg>

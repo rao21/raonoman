@@ -1,0 +1,33 @@
+---
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+import { stack } from '../content/stack';
+import { getIcon, brandColor } from '../lib/icons';
+import '../styles/toolkit.css';
+---
+
+<section class="sec wrap" id="stack">
+  <SectionHead
+    codeKeyword="final"
+    code=" stack = [mobile, ai, backend, ship, fintech];"
+    title="Tech stack"
+    lede="Flutter at the core, AI on top, and everything it takes to get an app into the stores and keep it there."
+  />
+  <div class="stack">
+    {stack.map((group) => (
+      <div class={`w build stackcat${group.featured ? ' st-ai' : ''}`} data-w="Wrap">
+        <div class="skel"></div>
+        <div class="sc-head"><span class="ic">{group.code}</span><h3>{group.title}</h3></div>
+        <ul class="logos-grid">
+          {group.items.map((item) => (
+            <li style={`--b:${item.icon ? brandColor(getIcon(item.icon).hex) : 'var(--accent)'}`}>
+              {item.icon ? <Icon slug={item.icon} /> : <i class="glyph" aria-hidden="true">{item.glyph}</i>}
+              <span>{item.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <p class="cred">Master's in Computer Software Engineering, SSUET (First Division) · Kony Certified Mobile Developer · Microsoft SharePoint Development</p>
+</section>

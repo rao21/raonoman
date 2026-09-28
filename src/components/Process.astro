@@ -1,0 +1,19 @@
+---
+import SectionHead from './SectionHead.astro';
+import { steps } from '../content/process';
+import '../styles/sections.css';
+---
+
+<section class="sec wrap" id="process">
+  <SectionHead codeKeyword="await" code=" discovery(); plan(); ship(); support();" title="How a project runs" />
+  <ol class="steps">
+    {steps.map((s, i) => (
+      <li class="w build" data-w="Step">
+        <div class="skel"></div>
+        <span class="ic">STEP {i + 1}</span>
+        <h3>{s.title}</h3>
+        <p>{s.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>

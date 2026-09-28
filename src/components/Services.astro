@@ -1,0 +1,24 @@
+---
+import SectionHead from './SectionHead.astro';
+import { services } from '../content/services';
+import '../styles/sections.css';
+---
+
+<section class="sec wrap" id="services">
+  <SectionHead codeKeyword="enum" code=" Engagement { advise, audit, build, lead, ai }" title="Ways to work together" lede="Pick what fits your stage. We'll decide together on the first call." />
+  <div class="svc">
+    {services.map((s) => (
+      <div class="w build" data-w="Card">
+        <div class="skel"></div>
+        <span class="ic">{s.code}</span>
+        <h3>{s.title}</h3>
+        <p>{s.body}</p>
+        <dl>
+          {s.facts.map(([k, v]) => (
+            <div><dt>{k}</dt><dd>{v}</dd></div>
+          ))}
+        </dl>
+      </div>
+    ))}
+  </div>
+</section>

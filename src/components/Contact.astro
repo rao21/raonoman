@@ -1,0 +1,95 @@
+---
+import SectionHead from './SectionHead.astro';
+import Flag from './Flag.astro';
+import { site } from '../content/site';
+import { getIcon } from '../lib/icons';
+import { WEB3FORMS_URL, type Need } from '../lib/contact';
+import '../styles/contact.css';
+
+const key: string = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+const needs: { value: Need; label: string }[] = [
+  { value: 'Advisory', label: 'Advice' },
+  { value: 'Audit', label: 'App audit' },
+  { value: 'Build', label: 'New app' },
+  { value: 'Lead', label: 'Mobile lead' },
+  { value: 'AI', label: 'AI feature' },
+];
+const waDisplay = '+92 333 2256193';
+const waHref = `https://wa.me/${site.whatsapp}`;
+const linkedinHandle = site.linkedin.replace(/\/$/, '').split('/').pop()!.replace(/-\d+[a-z0-9]*$/, '');
+const githubShort = site.github.replace(/^https:\/\//, '');
+const waPath = getIcon('whatsapp').path;
+---
+
+<section class="sec wrap" id="contact">
+  <SectionHead
+    codeKeyword="await"
+    code=" contact(rao);"
+    title="Let's talk about your app"
+    lede="Tell me where you are and what you need. Press Hot reload below and watch the card change material."
+  />
+  <div class="contact">
+    <div class="w cardzone" data-w="Transform" id="cardzone">
+      <div class="card3d" id="card3d" tabindex="0" role="button" aria-pressed="false" aria-label="Flip contact card">
+        <div class="face front">
+          <span class="sm" style="left:8%;top:11%">MOBILE CONSULTANT</span>
+          <span class="logo2">rn.</span>
+          <span class="chipc"></span><span class="nfc">)))</span>
+          <span class="emb">RAO NOMAN</span>
+          <span class="sm" style="left:8%;bottom:11%">MEMBER SINCE 2016 · <Flag /> PAKISTAN</span>
+          <span class="sm" style="right:7%;bottom:11%">FINTECH · AI</span>
+        </div>
+        <div class="face back">
+          <div class="stripe"></div>
+          <div class="rows">
+            <div><span>EMAIL</span><b>{site.email}</b></div>
+            <div><span>WHATSAPP</span><b>{waDisplay}</b></div>
+            <div><span>LINKEDIN</span><b>{linkedinHandle}</b></div>
+            <div><span>GITHUB</span><b>{githubShort}</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="hint"><span>Move your mouse to tilt</span><button type="button" id="flipBtn" aria-controls="card3d">Flip card ↻</button></div>
+    </div>
+
+    <div class="w formw" data-w="Form">
+      <h3>Book a free consultation</h3>
+      <p class="s"><span class="dot" aria-hidden="true"></span>Open to new projects</p>
+      <form id="contactForm" novalidate method="post" action={key ? WEB3FORMS_URL : undefined} data-key={key} data-timeout="12000">
+        <input type="hidden" name="access_key" value={key} />
+        <input type="hidden" name="from_name" value="rao21.github.io" />
+        <input type="hidden" name="subject" value="New call request: Build" />
+        <div class="botcheck-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></div>
+        <fieldset class="need">
+          <legend>I NEED HELP WITH</legend>
+          {needs.map((n) => (
+            <label><input type="radio" name="need" value={n.value} checked={n.value === 'Build'} /><span>{n.label}</span></label>
+          ))}
+        </fieldset>
+        <label for="f-name">NAME<input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name" /></label>
+        <span class="err" id="e-name" hidden>Please enter your name.</span>
+        <label for="f-email">WORK EMAIL<input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email" /></label>
+        <span class="err" id="e-email" hidden>Please enter a valid email.</span>
+        <label for="f-what">TELL ME ABOUT YOUR APP<textarea id="f-what" name="message" required aria-describedby="e-what"></textarea></label>
+        <span class="err" id="e-what" hidden>Tell me a little about your app.</span>
+        <button class="btn primary" type="submit">Request a call →</button>
+      </form>
+      <div class="receipt" id="receipt" aria-live="polite"></div>
+      <a class="btn wa" id="waBtn" href={waHref} target="_blank" rel="noopener" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d={waPath}></path></svg>Continue on WhatsApp
+      </a>
+      <div class="direct">
+        <a class="chip" href={site.cvUrl} target="_blank" rel="noopener">Download CV ↗</a>
+        <a class="chip" href={waHref} target="_blank" rel="noopener">WhatsApp {waDisplay}</a>
+        <a class="chip" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="chip" href={site.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="chip" href={site.github} target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../scripts/card';
+  import '../scripts/contact';
+</script>
