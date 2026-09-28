@@ -43,12 +43,23 @@ export function receiptLines(id: string, f: ContactFields, sent: boolean): [stri
 
 /**
  * Posts the request to Web3Forms. Resolves true only when Web3Forms says
- * success; an empty key, a non-2xx, a thrown fetch or success:false are all false.
+ * success; an empty key, a non-2xx, a thrown fetch, a timeout (a stalled request
+ * is aborted after timeoutMs) or success:false are all false.
  */
-export async function sendRequest(key: string, body: FormData, fetchFn: typeof fetch = fetch): Promise<boolean> {
+export async function sendRequest(
+  key: string,
+  body: FormData,
+  fetchFn: typeof fetch = fetch,
+  timeoutMs = 12000,
+): Promise<boolean> {
   if (!key) return false;
   try {
-    const res = await fetchFn(WEB3FORMS_URL, { method: 'POST', body, headers: { Accept: 'application/json' } });
+    const res = await fetchFn(WEB3FORMS_URL, {
+      method: 'POST',
+      body,
+      headers: { Accept: 'application/json' },
+      signal: AbortSignal.timeout(timeoutMs),
+    });
     if (!res.ok) return false;
     const json = (await res.json()) as { success?: unknown };
     return json.success === true;

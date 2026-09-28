@@ -12,6 +12,14 @@ const waBtn = document.getElementById('waBtn') as HTMLAnchorElement | null;
 
 const fieldEl: Record<'name' | 'email' | 'about', string> = { name: 'f-name', email: 'f-email', about: 'f-what' };
 
+// Each field's error message is the element its aria-describedby points at.
+function setInvalid(el: HTMLElement, invalid: boolean) {
+  const msg = document.getElementById(el.getAttribute('aria-describedby') ?? '');
+  if (invalid) el.setAttribute('aria-invalid', 'true');
+  else el.removeAttribute('aria-invalid');
+  if (msg) msg.hidden = !invalid;
+}
+
 function showReceipt(lines: [string, string][]) {
   if (!receipt) return;
   receipt.textContent = '';
@@ -35,8 +43,12 @@ function showReceipt(lines: [string, string][]) {
 if (form && receipt && waBtn) {
   const submit = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
   const key = form.dataset.key ?? '';
+  const label = submit.textContent ?? '';
 
-  form.addEventListener('input', (e) => (e.target as HTMLElement).removeAttribute('aria-invalid'));
+  form.addEventListener('input', (e) => {
+    const el = e.target as HTMLElement;
+    if (el.hasAttribute('aria-describedby')) setInvalid(el, false);
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -52,13 +64,15 @@ if (form && receipt && waBtn) {
     const bad = validateContact(fields);
     if (bad && bad !== 'need') {
       const el = document.getElementById(fieldEl[bad])!;
-      el.setAttribute('aria-invalid', 'true');
+      setInvalid(el, true);
       el.focus();
       return;
     }
 
     const id = `RN-${Math.floor(1000 + Math.random() * 9000)}`;
     submit.disabled = true;
+    submit.setAttribute('aria-busy', 'true');
+    submit.textContent = 'Sending…';
     let sent: boolean;
     if (data.get('botcheck')) {
       sent = true; // honeypot tripped: say thanks, send nothing
@@ -67,9 +81,12 @@ if (form && receipt && waBtn) {
       data.set('from_name', 'rao21.github.io');
       data.set('access_key', key);
       data.set('request', id);
-      sent = await sendRequest(key, data);
+      const timeout = Number(form.dataset.timeout) || 12000;
+      sent = await sendRequest(key, data, fetch, timeout);
     }
     submit.disabled = false;
+    submit.removeAttribute('aria-busy');
+    submit.textContent = label;
 
     if (!isFlipped()) setFlipped(true);
     showReceipt(receiptLines(id, fields, sent));

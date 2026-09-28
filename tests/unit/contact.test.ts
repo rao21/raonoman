@@ -38,6 +38,11 @@ describe('sendRequest', () => {
     expect(await sendRequest('k', fd(), res(200, 'not json'))).toBe(false);
     expect(await sendRequest('k', fd(), (async () => { throw new Error('offline'); }) as unknown as typeof fetch)).toBe(false);
   });
+  it('gives up on a stalled request', async () => {
+    const stall = ((_: unknown, init?: RequestInit) =>
+      new Promise((_r, reject) => init?.signal?.addEventListener('abort', () => reject(init.signal!.reason)))) as unknown as typeof fetch;
+    expect(await sendRequest('k', fd(), stall, 20)).toBe(false);
+  });
   it('skips the network when the key is empty', async () => {
     let called = false;
     const spy = (async () => { called = true; return new Response('{}'); }) as unknown as typeof fetch;

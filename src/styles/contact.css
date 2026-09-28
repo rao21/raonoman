@@ -37,6 +37,7 @@
 .formw input:focus,.formw textarea:focus{outline:none; border-color:var(--accent)}
 .formw input:focus-visible:not([type=radio]),.formw textarea:focus-visible{box-shadow:0 0 0 1px var(--accent)}
 .formw [aria-invalid=true]{border-color:#E5484D !important}
+.formw .err{font:500 12px/1.3 "Geist Variable",sans-serif; color:#E5484D; margin-top:-6px}
 .formw textarea{min-height:110px; resize:vertical}
 .formw button[type=submit]{justify-self:start}
 .formw button[type=submit]:disabled{opacity:.6; cursor:progress; transform:none}

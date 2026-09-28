@@ -51,6 +51,34 @@ for (const [label, handler] of [
   });
 }
 
+test('a stalled request times out into the fallback', async ({ page }) => {
+  await page.route(API, () => {}); // never fulfils
+  await page.goto('./#contact');
+  await page.locator('#contactForm').evaluate((f: HTMLFormElement) => (f.dataset.timeout = '300'));
+  await fill(page);
+  const submit = page.locator('#contact button[type=submit]');
+  await submit.click();
+  await expect(page.locator('#receipt')).toContainText('✕ NOT SENT');
+  await expect(page.locator('#receipt')).toContainText('rao.noman786@outlook.com');
+  await expect(page.getByRole('link', { name: 'Continue on WhatsApp' })).toBeVisible();
+  await expect(submit).toBeEnabled();
+});
+
+test('invalid fields explain themselves and clear on input', async ({ page }) => {
+  await page.goto('./#contact');
+  await page.fill('#f-name', 'Sara');
+  await page.fill('#f-email', 'sara@');
+  await page.click('#contact button[type=submit]');
+  const email = page.locator('#f-email');
+  await expect(email).toBeFocused();
+  await expect(email).toHaveAttribute('aria-invalid', 'true');
+  await expect(email).toHaveAccessibleDescription('Please enter a valid email.');
+  await expect(page.locator('#e-email')).toBeVisible();
+  await email.fill('sara@startup.ae');
+  await expect(page.locator('#e-email')).toBeHidden();
+  await expect(email).not.toHaveAttribute('aria-invalid', 'true');
+});
+
 test('posts the Web3Forms payload and disables submit while in flight', async ({ page }) => {
   let release!: () => void;
   const gate = new Promise<void>(res => (release = res));
@@ -66,9 +94,13 @@ test('posts the Web3Forms payload and disables submit while in flight', async ({
   const submit = page.locator('#contact button[type=submit]');
   await submit.click();
   await expect(submit).toBeDisabled();
+  await expect(submit).toHaveText('Sending…');
+  await expect(submit).toHaveAttribute('aria-busy', 'true');
   release();
   await expect(page.locator('#receipt')).toContainText('✓ RECEIVED');
   await expect(submit).toBeEnabled();
+  await expect(submit).toHaveText('Request a call →');
+  await expect(submit).not.toHaveAttribute('aria-busy', 'true');
   expect(body).toContain('test-key');
   expect(body).toContain('New call request: Audit');
   expect(body).toContain('rao21.github.io');
@@ -109,6 +141,7 @@ test('card back and direct chips carry the contact details', async ({ page }) =>
   await expect(c.getByRole('link', { name: /Download CV/ })).toHaveAttribute('href', /drive\.google\.com/);
   await expect(c.locator('.direct a[href^="mailto:rao.noman786@outlook.com"]')).toHaveCount(1);
   await expect(c.locator('.direct a[href^="https://wa.me/923332256193"]')).toHaveCount(1);
+  await expect(c.locator('.direct a[href="https://github.com/rao21"]')).toHaveCount(1);
   await expect(c.getByRole('radio', { name: 'New app' })).toBeChecked();
   await expect(c.getByRole('radio')).toHaveCount(5);
 });
