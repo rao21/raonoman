@@ -70,7 +70,7 @@
 .b-cta b{font:600 clamp(18px,1.7vw,22px)/1.15 'Geist Variable',sans-serif; letter-spacing:-.02em}
 .b-cta .arrow{align-self:flex-end; font-size:28px; transition:transform .3s}
 .b-cta:hover .arrow{transform:translateX(6px)}
-.b-cta .tagline{color:inherit; opacity:.7}
+.b-cta .tagline{color:inherit; opacity:.9}
 
 /* ---------- app marquee v2 ---------- */
 .b-logos{grid-column:1/-1; grid-row:4; display:flex; flex-direction:row; align-items:center; gap:20px; padding:16px 0 16px 22px; overflow:hidden}

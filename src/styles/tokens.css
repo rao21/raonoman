@@ -1,6 +1,9 @@
-/* ---------- skins: paper (light), graphite (dark), flutter (blue) ---------- */
+/* ---------- skins: paper (light), graphite (dark), flutter (blue) ----------
+   --danger/--success pass 4.5:1 on --tile/--tile2; --tcmix is the share of a talk's
+   brand colour kept when it is used as text (the rest is --ink) so it passes too. */
 :root{
   --bg:#EFEDE8; --tile:#FFFFFF; --tile2:#F6F4EF; --border:#DCD8CF; --ink:#16161A; --muted:#6B675E; --accent:#0040FF; --accent-ink:#FFFFFF; --glow:rgba(0,64,255,.10);
+  --danger:#C62828; --success:#177245; --tcmix:60%;
   --head:"Instrument Serif",Georgia,serif; --headw:400; --headls:-.012em; --emstyle:italic;
   --card-bg:linear-gradient(135deg,#FDFCF9 0%,#ECE9E2 45%,#FAF8F3 70%,#E2DED5 100%); --card-ink:#2A2925; --card-line:rgba(0,0,0,.06);
   color-scheme:light;
@@ -8,6 +11,7 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]):not([data-skin]){
     --bg:#0B0C0E; --tile:#131417; --tile2:#17181C; --border:#25272C; --ink:#EDEEF0; --muted:#8B8D96; --accent:#4DA3FF; --accent-ink:#06121F; --glow:rgba(77,163,255,.14);
+  --danger:#E5484D; --success:#2FB86F; --tcmix:80%;
     --head:'Geist Variable',system-ui,sans-serif; --headw:600; --headls:-.045em; --emstyle:normal;
     --card-bg:linear-gradient(135deg,#8E9096 0%,#5E6066 22%,#B9BBC1 46%,#6A6C72 64%,#44464B 100%); --card-ink:#1E1F22; --card-line:rgba(255,255,255,.035);
     color-scheme:dark;
@@ -15,18 +19,21 @@
 }
 :root[data-theme="dark"]:not([data-skin]), :root[data-skin="graphite"]{
   --bg:#0B0C0E; --tile:#131417; --tile2:#17181C; --border:#25272C; --ink:#EDEEF0; --muted:#8B8D96; --accent:#4DA3FF; --accent-ink:#06121F; --glow:rgba(77,163,255,.14);
+  --danger:#E5484D; --success:#2FB86F; --tcmix:80%;
   --head:'Geist Variable',system-ui,sans-serif; --headw:600; --headls:-.045em; --emstyle:normal;
   --card-bg:linear-gradient(135deg,#8E9096 0%,#5E6066 22%,#B9BBC1 46%,#6A6C72 64%,#44464B 100%); --card-ink:#1E1F22; --card-line:rgba(255,255,255,.035);
   color-scheme:dark;
 }
 :root[data-skin="paper"]{
   --bg:#EFEDE8; --tile:#FFFFFF; --tile2:#F6F4EF; --border:#DCD8CF; --ink:#16161A; --muted:#6B675E; --accent:#0040FF; --accent-ink:#FFFFFF; --glow:rgba(0,64,255,.10);
+  --danger:#C62828; --success:#177245; --tcmix:60%;
   --head:"Instrument Serif",Georgia,serif; --headw:400; --headls:-.012em; --emstyle:italic;
   --card-bg:linear-gradient(135deg,#FDFCF9 0%,#ECE9E2 45%,#FAF8F3 70%,#E2DED5 100%); --card-ink:#2A2925; --card-line:rgba(0,0,0,.06);
   color-scheme:light;
 }
 :root[data-skin="flutter"]{
   --bg:#03182C; --tile:#06233F; --tile2:#082A4B; --border:#103B63; --ink:#E6F4FF; --muted:#86A9C4; --accent:#54C5F8; --accent-ink:#03182C; --glow:rgba(84,197,248,.16);
+  --danger:#FF6B6E; --success:#2FB86F; --tcmix:75%;
   --head:'Geist Variable',system-ui,sans-serif; --headw:600; --headls:-.045em; --emstyle:normal;
   --card-bg:linear-gradient(135deg,#1A7BD1 0%,#0B4C8A 30%,#2E95E8 52%,#0A3A6E 74%,#072A52 100%); --card-ink:#E6F4FF; --card-line:rgba(255,255,255,.05);
   color-scheme:dark;
