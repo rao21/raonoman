@@ -27,8 +27,8 @@ describe('content rules', () => {
       /\(IBA\), Karachi/g,
       /Asia\/Karachi/g,
       /Flutter Karachi/g,
-      /Flutter Forward Extended Karachi/g,
       /Flutter Festival Karachi/g,
+      /Flutter Meetup Karachi/g,
       /Google I\/O Extended Karachi/g,
     ];
     const scrubbed = ALLOWED.reduce((t, r) => t.replace(r, ''), text);

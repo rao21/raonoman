@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import SectionHead from './SectionHead.astro';
 import { talks, community } from '../content/talks';
 import { site } from '../content/site';
@@ -39,7 +40,7 @@ const filters: { label: string; f: string }[] = [
   </div>
   <h3 class="more-title">Talks, panels &amp; mentoring</h3>
   <div class="tstats">
-    <div><b>{talks.length}</b><span>stages since 2022</span></div>
+    <div><b>{talks.length}</b><span>appearances since 2022</span></div>
     <div><b>{speakerCount}</b><span>talks</span></div>
     <div><b>{panelCount}</b><span>panels</span></div>
     <div><b>{mentorJudgeCount}</b><span>mentor &amp; judge roles</span></div>
@@ -58,6 +59,21 @@ const filters: { label: string; f: string }[] = [
           <span class="mon">{t.month || ' '}</span>
           <span class="yr">{t.year}</span>
         </div>
+        <a
+          class="tbanner"
+          href={t.banner.src}
+          target="_blank"
+          rel="noopener"
+          aria-label={`Open the ${t.title} banner`}
+        >
+          <Image
+            src={t.banner}
+            widths={[132, 264]}
+            sizes="132px"
+            loading="lazy"
+            alt={`${t.title} event banner`}
+          />
+        </a>
         <div class="tmain">
           <span class="trole">{t.role}</span>
           <h4>{t.title}</h4>

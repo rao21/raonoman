@@ -1,4 +1,16 @@
-export type TalkKind = 'speaker' | 'panel' | 'mentor' | 'judge' | 'trainer';
+import type { ImageMetadata } from 'astro';
+import buildWithAi2026 from '../assets/talks/build-with-ai-2026.jpg';
+import flutterFlash2Panel2025 from '../assets/talks/flutter-flash-2-panel-2025.jpg';
+import flutterMeetup2024 from '../assets/talks/flutter-meetup-2024.jpg';
+import flutterForwardExtended2023 from '../assets/talks/flutter-forward-extended-2023.jpg';
+import codeJam2023 from '../assets/talks/code-jam-2023.jpg';
+import flutterFlashDay12022 from '../assets/talks/flutter-flash-day1-2022.jpg';
+import flutterFlashJudge2022 from '../assets/talks/flutter-flash-judge-2022.jpg';
+import ioExtended2022 from '../assets/talks/io-extended-2022.jpg';
+import freelancefest2022 from '../assets/talks/freelancefest-2022.jpg';
+import flutterFestival2022 from '../assets/talks/flutter-festival-2022.jpg';
+
+export type TalkKind = 'speaker' | 'panel' | 'mentor' | 'judge' | 'trainer' | 'community';
 
 export interface Talk {
   kind: TalkKind;
@@ -9,6 +21,7 @@ export interface Talk {
   org: string;
   blurb: string;
   accent: string;
+  banner: ImageMetadata;
   note?: string;
 }
 
@@ -20,18 +33,42 @@ export const talks: Talk[] = [
     role: 'Mentor',
     title: 'Build with AI Hackathon',
     org: 'GDG Kolachi × Folio3 · Folio3 Pakistan',
-    blurb: 'Mentored teams building AI-powered products across a full-day hackathon.',
+    blurb: 'Mentored teams building AI-powered solutions across a full-day hackathon.',
     accent: '#4285F4',
+    banner: buildWithAi2026,
   },
   {
     kind: 'panel',
-    month: null,
+    month: 'JAN',
     year: 2025,
     role: 'Panelist',
-    title: 'Diverse Leadership Panel',
-    org: 'Flutter Flash · Flutter Karachi',
-    blurb: 'On leadership journeys, with founders and a Google Developer Expert, as Tech Lead at Xpence.',
+    title: 'Flutter Flash 2.0: Diverse Leadership Panel',
+    org: 'Flutter Karachi · IBA City Campus',
+    blurb: 'Panel on leadership journeys with founders and a Google Developer Expert, speaking as Tech Lead at Xpence.',
     accent: '#1FA2F0',
+    banner: flutterFlash2Panel2025,
+  },
+  {
+    kind: 'community',
+    month: null,
+    year: 2024,
+    role: 'Community',
+    title: 'Flutter Meetup Karachi',
+    org: 'Flutter Karachi · Folio3',
+    blurb: "Part of Flutter Karachi's biggest meetup of the season, with 250+ attendees.",
+    accent: '#1FA2F0',
+    banner: flutterMeetup2024,
+  },
+  {
+    kind: 'speaker',
+    month: 'MAR',
+    year: 2023,
+    role: 'Speaker',
+    title: 'Flutter Forward Extended',
+    org: 'GDG Live Pakistan',
+    blurb: 'Took attendees through Flutter and Dart, drawing on Flutter, native iOS and Kony experience.',
+    accent: '#4285F4',
+    banner: flutterForwardExtended2023,
   },
   {
     kind: 'speaker',
@@ -42,67 +79,52 @@ export const talks: Talk[] = [
     org: "Code Jam'23 · GDG On Campus SMIU",
     blurb: 'A full session getting students from zero to their first Flutter app.',
     accent: '#34A853',
-  },
-  {
-    kind: 'panel',
-    month: 'MAR',
-    year: 2022,
-    role: 'Panel speaker',
-    title: 'Flutter Forward Extended Karachi',
-    org: 'Flutter Karachi · Habib University',
-    blurb: 'Live panel and Q&A with mentors for the Flutter Pakistan community.',
-    accent: '#1FA2F0',
+    banner: codeJam2023,
   },
   {
     kind: 'speaker',
-    month: null,
-    year: 2022,
-    role: 'Speaker',
-    title: 'Flutter Forward Extended',
-    org: 'GDG Live Pakistan',
-    blurb: 'Took attendees through Flutter and Dart, drawing on Flutter, native iOS and Kony experience.',
-    accent: '#4285F4',
-  },
-  {
-    kind: 'speaker',
-    month: null,
+    month: 'SEP',
     year: 2022,
     role: 'Speaker · Day 1',
-    title: 'Flutter Flash',
-    org: 'Flutter Karachi',
-    blurb: "Day 1 speaker at Flutter Karachi's flagship community event.",
+    title: 'Use Protocol Buffers in Flutter',
+    org: 'Flutter Flash · Flutter Karachi',
+    blurb: "Day 1 talk at Flutter Karachi's flagship event, as part of Flutter Karachi's Executive Committee.",
     accent: '#1FA2F0',
+    banner: flutterFlashDay12022,
   },
   {
     kind: 'judge',
-    month: null,
+    month: 'SEP',
     year: 2022,
     role: 'Judge · Day 2',
     title: 'Flutter Flash: "Hot Reload"',
-    org: 'Flutter Karachi',
+    org: 'Flutter Karachi · IBA City Campus',
     blurb: "Judged Day 2 alongside Pakistan's first female GDE for Flutter & Dart.",
     accent: '#FF7A00',
+    banner: flutterFlashJudge2022,
     note: 'Yes, the day was literally called Hot Reload.',
   },
   {
     kind: 'mentor',
     month: 'JUL',
     year: 2022,
-    role: 'Community lounge mentor',
+    role: 'Mentor for Flutter',
     title: 'Google I/O Extended Karachi',
     org: 'GDG Kolachi · Iqra University',
-    blurb: 'Tech speaker and mentor in the community lounge.',
+    blurb: 'Mentored attendees on Flutter in the community lounge.',
     accent: '#EA4335',
+    banner: ioExtended2022,
   },
   {
     kind: 'trainer',
     month: 'MAY',
     year: 2022,
     role: 'Workshop trainer',
-    title: 'FreelanceFest 2022',
-    org: 'PAFLA, Pakistan Freelancers Association · Pearl Continental',
-    blurb: 'Two-day freelancing conference; ran a hands-on workshop.',
+    title: 'Introduction to Flutter for Mobile Applications',
+    org: 'FreelanceFest 2022 · PAFLA, Pearl Continental',
+    blurb: 'Hands-on Flutter workshop at a two-day freelancing conference.',
     accent: '#0F9D58',
+    banner: freelancefest2022,
   },
   {
     kind: 'speaker',
@@ -113,6 +135,7 @@ export const talks: Talk[] = [
     org: 'Flutter Karachi · featured at Google I/O 2022',
     blurb: 'Technical talk alongside IBA students I mentored. The event was featured globally at Google I/O.',
     accent: '#1FA2F0',
+    banner: flutterFestival2022,
   },
 ];
 
