@@ -41,7 +41,7 @@
 .formw textarea{min-height:110px; resize:vertical}
 .formw button[type=submit]{justify-self:start}
 .formw button[type=submit]:disabled{opacity:.6; cursor:progress; transform:none}
-.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; visibility:hidden}
+.botcheck-field{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; visibility:hidden}
 
 .need{border:0; padding:0; margin:0 0 4px; display:flex; flex-wrap:wrap; gap:8px}
 .need legend{font:500 12px/1 "Geist Mono Variable",monospace; color:var(--muted); margin-bottom:10px; padding:0}

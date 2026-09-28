@@ -8,6 +8,20 @@ test('reduced motion: no boot overlay, full headline visible', async ({ page }) 
   await expect(page.locator('#rot em')).toHaveText('scale to millions.');
 });
 
+test('"Live on the stores" phones are visible, full size and inside the tile', async ({ page }) => {
+  await page.goto('./');
+  const tile = await page.locator('.b-phones').boundingBox();
+  const phones = page.locator('.b-phones img.hp');
+  await expect(phones).toHaveCount(3);
+  for (const phone of await phones.all()) {
+    await expect(phone).toBeVisible();
+    const box = await phone.boundingBox();
+    expect(box!.height).toBeGreaterThan(150);
+    expect(box!.x + box!.width).toBeGreaterThan(tile!.x);
+    expect(box!.x).toBeLessThan(tile!.x + tile!.width);
+  }
+});
+
 test.describe('with motion', () => {
   test.use({ reducedMotion: 'no-preference' });
 

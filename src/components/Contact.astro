@@ -59,7 +59,7 @@ const waPath = getIcon('whatsapp').path;
         <input type="hidden" name="access_key" value={key} />
         <input type="hidden" name="from_name" value="rao21.github.io" />
         <input type="hidden" name="subject" value="New call request: Build" />
-        <div class="hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></div>
+        <div class="botcheck-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></div>
         <fieldset class="need">
           <legend>I NEED HELP WITH</legend>
           {needs.map((n) => (
