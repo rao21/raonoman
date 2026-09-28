@@ -15,9 +15,60 @@ import Why from '../components/Why.astro';
 import Toolkit from '../components/Toolkit.astro';
 import Journey from '../components/Journey.astro';
 import Contact from '../components/Contact.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': 'https://rao21.github.io/raonoman/#rao',
+        name: 'Rao Muhammad Noman',
+        alternateName: 'Rao Noman',
+        jobTitle: 'Flutter Consultant & AI Engineer',
+        description:
+          'Mobile app consultant and Lead Flutter Engineer helping fintech and AI startups ship mobile apps that scale to millions of users.',
+        url: 'https://rao21.github.io/raonoman/',
+        email: 'mailto:rao.noman786@outlook.com',
+        address: { '@type': 'PostalAddress', addressCountry: 'PK' },
+        sameAs: [
+          'https://www.linkedin.com/in/rao-muhammad-noman-448745a1/',
+          'https://github.com/rao21',
+          'https://twitter.com/RaoNoma97840139',
+        ],
+        knowsAbout: [
+          'FastAPI',
+          'AI engineering',
+          'Large language models',
+          'Retrieval-augmented generation',
+          'Python',
+          'Flutter',
+          'Dart',
+          'Mobile app development',
+          'iOS',
+          'Android',
+          'Fintech apps',
+          'Digital banking',
+          'AI apps',
+          'Swift',
+          'React Native',
+        ],
+        alumniOf: { '@type': 'CollegeOrUniversity', name: 'Sir Syed University of Engineering & Technology' },
+      },
+      {
+        '@type': 'ProfessionalService',
+        name: 'Rao Noman · Mobile App Consulting',
+        url: 'https://rao21.github.io/raonoman/',
+        founder: { '@id': 'https://rao21.github.io/raonoman/#rao' },
+        areaServed: ['United Arab Emirates', 'Saudi Arabia', 'Oman', 'United Kingdom', 'United States', 'Pakistan'],
+        serviceType: ['Flutter app development', 'Mobile app consulting', 'Mobile app audit', 'Fractional mobile lead'],
+      },
+    ],
+  },
+];
 ---
 
-<Base>
+<Base jsonLd={jsonLd}>
   <Boot />
   <Nav />
   <main id="main">
