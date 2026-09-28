@@ -1,0 +1,49 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'Geist Variable',system-ui,sans-serif; font-size:16px; line-height:1.6; transition:background .4s,color .4s}
+a{color:inherit}
+.mono{font-family:'Geist Mono Variable',ui-monospace,monospace}
+.wrap{max-width:1200px; margin-inline:auto; padding-inline:clamp(16px,4vw,40px)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+
+[hidden]{display:none !important}
+
+.skip{position:absolute;left:-999px}
+.skip:focus{left:16px;top:16px;z-index:100}
+
+/* ---------- tiles (every "widget") ---------- */
+.w{position:relative; background:var(--tile); border:1px solid var(--border); border-radius:18px; transition:background .4s,border-color .4s,transform .25s ease,box-shadow .25s ease}
+.w::before{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),var(--glow),transparent 45%)}
+.w:hover::before{opacity:1}
+/* debug paint */
+.debug .w{outline:1.5px dashed var(--dbg,#00C98D); outline-offset:-1px}
+.debug .w::after{content:attr(data-w); position:absolute; top:-9px; left:14px; font:500 10px/1 'Geist Mono Variable',monospace; padding:3px 6px; background:var(--dbg,#00C98D); color:#000; border-radius:4px; z-index:3}
+.debug .w:nth-of-type(3n+1){--dbg:#FF5AA0} .debug .w:nth-of-type(3n+2){--dbg:#FFC24D}
+
+/* build-in (skeleton → content) */
+.build{position:relative}
+.build > .skel{position:absolute; inset:0; border-radius:inherit; background:var(--tile2); z-index:2; pointer-events:none; overflow:hidden; opacity:0; transition:opacity .5s ease .1s}
+.build > .skel::after{content:""; position:absolute; inset:0; background:linear-gradient(100deg,transparent 20%,color-mix(in srgb,var(--ink) 7%,transparent) 50%,transparent 80%); transform:translateX(-100%); animation:shimmer 1.1s infinite}
+@keyframes shimmer{to{transform:translateX(100%)}}
+.build.pending > .skel{opacity:1}
+.build.pending{transform:translateY(24px)}
+.build{transition:transform .8s cubic-bezier(.16,1,.3,1)}
+
+.btn{display:inline-flex; align-items:center; gap:10px; font:500 14px/1 'Geist Variable',sans-serif; padding:12px 18px; border-radius:999px; text-decoration:none; border:1px solid var(--border); background:var(--tile); color:var(--ink); cursor:pointer; transition:transform .2s, background .4s, color .4s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+
+.chip{font:500 12px/1 'Geist Mono Variable',monospace; padding:8px 12px; border-radius:999px; border:1px solid var(--border); text-decoration:none; color:var(--ink); background:var(--tile2); transition:border-color .2s}
+.chip:hover{border-color:var(--accent)}
+
+section.sec{padding-block:clamp(80px,10vw,130px) 0}
+.sec-head{display:grid; gap:12px; margin-bottom:34px; max-width:720px}
+.code-label{font:500 13px/1 'Geist Mono Variable',monospace; color:var(--muted)}
+.code-label .k{color:var(--accent)}
+.sec-head h2{margin:0; font-family:var(--head); font-weight:var(--headw); letter-spacing:var(--headls); font-size:clamp(36px,5vw,64px); line-height:1}
+.sec-head p{margin:0; color:var(--muted); max-width:56ch}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+}
