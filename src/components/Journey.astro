@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import { journey } from '../content/journey';
+import '../styles/journey.css';
+
+const since = journey[journey.length - 1].start.split(' ').pop();
+---
+
+<section class="sec wrap" id="journey">
+  <SectionHead codeKeyword="// " code="Flutter Inspector › widget tree" title="Ten years, one tree" lede="Open any line to see what I did there." />
+  <div class="w tree" data-w="Inspector">
+    <div class="root"><b>RaoNoman</b><span>StatefulWidget · since {since}</span></div>
+    <ul id="treeList">
+      {journey.map((job, i) => {
+        const wide = job.logo ? job.logo.width / job.logo.height > 1.4 : false;
+        const when = `${job.start} ${job.end === 'NOW' ? '→' : '–'} ${job.end}`;
+        return (
+          <li>
+            <details open={i === 0}>
+              <summary>
+                <span class="car">▶</span>
+                {job.logo ? (
+                  <span class={`clogo${wide ? ' wide' : ''}`}>
+                    <Image src={job.logo} alt={`${job.company} logo`} widths={[44, 88]} />
+                  </span>
+                ) : (
+                  <span class="clogo mono" style={`background:${job.mono!.bg};color:${job.mono!.fg}`} aria-hidden="true">{job.mono!.text}</span>
+                )}
+                <span class="role">{job.role}<small>{job.company}</small></span>
+                <span class="when">{when}</span>
+              </summary>
+              <p class="body">{job.summary}</p>
+            </details>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<script>
+  import '../scripts/tree';
+</script>

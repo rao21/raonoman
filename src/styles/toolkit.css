@@ -1,0 +1,20 @@
+/* ---------- tech stack ---------- */
+.stack{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:14px}
+.stackcat{grid-column:span 2; padding:22px; display:grid; gap:18px; align-content:start}
+.stackcat.st-ai{grid-column:span 4; background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--tile)),var(--tile) 55%)}
+.stackcat:nth-child(1){grid-column:span 2}
+@media (max-width:980px){ .stack{grid-template-columns:repeat(2,minmax(0,1fr))} .stackcat,.stackcat.st-ai,.stackcat:nth-child(1){grid-column:1/-1} }
+.sc-head{display:grid; gap:8px}
+.sc-head .ic{font:500 12px/1 "Geist Mono Variable",monospace; color:var(--accent)}
+.sc-head h3{margin:0; font-family:var(--head); font-weight:var(--headw); letter-spacing:var(--headls); font-size:28px; line-height:1}
+.logos-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); gap:8px}
+.logos-grid li{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:16px 8px 12px; border-radius:14px; background:var(--tile2); border:1px solid var(--border); text-align:center; transition:transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s}
+.logos-grid svg{width:30px; height:30px; fill:var(--ink); transition:fill .3s, transform .4s cubic-bezier(.16,1,.3,1)}
+.logos-grid .glyph{display:grid; place-items:center; min-width:30px; height:30px; padding:0 4px; font:600 13px/1 "Geist Mono Variable",monospace; font-style:normal; color:var(--ink); border:1.5px solid currentColor; border-radius:8px; transition:color .3s}
+.logos-grid span{font-size:13px; font-weight:500; line-height:1.2}
+.logos-grid li:hover{transform:translateY(-4px); border-color:var(--b); box-shadow:0 14px 24px -16px var(--b)}
+.logos-grid li:hover svg{fill:var(--b); transform:scale(1.12) rotate(-4deg)}
+.logos-grid li:hover .glyph{color:var(--b)}
+.stackcat.pending .logos-grid li{opacity:0; transform:translateY(10px) scale(.9)}
+.stackcat .logos-grid li{transition:opacity .5s, transform .5s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s}
+#stack .cred{margin-top:16px; color:var(--muted)}
