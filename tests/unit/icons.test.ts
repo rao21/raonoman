@@ -9,6 +9,13 @@ describe('icons', () => {
     expect(i.hex).toMatch(/^[0-9A-F]{6}$/i);
   });
   it('throws for unknown slugs', () => expect(() => getIcon('nope-nope')).toThrow());
+  it('falls back to a local path for brands missing from simple-icons', () => {
+    for (const slug of ['openai', 'xamarin', 'azuredevops']) {
+      const i = getIcon(slug);
+      expect(i.path.length).toBeGreaterThan(0);
+      expect(i.hex).toMatch(/^[0-9A-F]{6}$/i);
+    }
+  });
   it('falls back to accent for near-black and near-white brands', () => {
     expect(brandColor('000000')).toBe('var(--accent)');
     expect(brandColor('FFFFFF')).toBe('var(--accent)');

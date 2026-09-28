@@ -21,7 +21,7 @@ import '../styles/toolkit.css';
         <ul class="logos-grid">
           {group.items.map((item) => (
             <li style={`--b:${item.icon ? brandColor(getIcon(item.icon).hex) : 'var(--accent)'}`}>
-              {item.icon ? <Icon slug={item.icon} /> : <i class="glyph">{item.glyph}</i>}
+              {item.icon ? <Icon slug={item.icon} /> : <i class="glyph" aria-hidden="true">{item.glyph}</i>}
               <span>{item.label}</span>
             </li>
           ))}
