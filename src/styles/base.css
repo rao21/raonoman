@@ -78,3 +78,5 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important; transition:none!important; scroll-behavior:auto!important}
 }
+
+.flag{display:inline-block; width:1.35em; height:.9em; vertical-align:-.08em; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.15); margin-right:4px}

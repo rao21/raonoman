@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import Flag from './Flag.astro';
+import { site } from '../content/site';
+import { caseStudies, marqueeApps } from '../content/projects';
+import '../styles/hero.css';
+
+const shot = (slug: string) => {
+  const s = caseStudies.find((c) => c.slug === slug)?.screenshots[0];
+  if (!s) throw new Error(`Hero: missing screenshot for ${slug}`);
+  return s;
+};
+const phones = [
+  { img: shot('cence'), cls: 'hp hp1' },
+  { img: shot('xpence'), cls: 'hp hp2' },
+  { img: shot('jazzcash'), cls: 'hp hp3' },
+];
+const [years, apps] = site.stats;
+const copies = [false, true];
+---
+
+<header class="hero wrap">
+  <div class="bento" id="bento">
+    <div class="w b-head fly" data-w="Column">
+      <span class="tagline">LEAD FLUTTER ENGINEER · AI ENGINEER · {years.value}{years.suffix} YEARS</span>
+      <h1 id="headline"><span class="h1-kicker">{site.kicker}</span>{site.headlineLead} <span class="rot" id="rot" data-phrases={JSON.stringify(site.phrases)}><em>{site.phrases[0]}</em><i class="caret" aria-hidden="true"></i></span></h1>
+      <p class="lede">{site.lede}</p>
+      <div class="hero-btns"><a class="btn primary" href="#contact">Book a free 30-min call</a><a class="btn" href="#work">See case studies</a></div>
+      <a class="trust" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span>Recommended by two Google Developer Experts on LinkedIn</a>
+    </div>
+    <div class="w b-phones fly" data-w="Stack" aria-hidden="true">
+      <span class="tagline">LIVE ON THE STORES</span>
+      <div class="hp-stage">
+        {phones.map((p) => (
+          <Image src={p.img} alt="" class={p.cls} loading="eager" widths={[240, 360]} sizes="(max-width: 900px) 140px, 200px" />
+        ))}
+        <span class="hp-badge">⚡ {apps.value}{apps.suffix} live apps</span>
+      </div>
+    </div>
+    {site.stats.map((s, i) => (
+      <div class={`w stat b-s${i + 1} fly`} data-w="Stat">
+        <span class="tagline">{s.tag}</span>
+        <b data-count={s.value} data-suffix={s.suffix}>{s.value}{s.suffix}</b>
+        <span>{s.label}</span>
+      </div>
+    ))}
+    <div class="w b-loc fly" data-w="Clock">
+      <span class="tagline">MY TIME NOW · PKT</span>
+      <div class="clock" id="clock">PKT</div>
+      <p><Flag /> {site.country} · a full working day with the Gulf, afternoons with the UK</p>
+    </div>
+    <div class="w b-logos fly" data-w="Marquee">
+      <span class="tagline">APPS I'VE BUILT OR LED</span>
+      <div class="mq-mask">
+        <div class="marquee2">
+          {copies.map((dup) =>
+            marqueeApps.map((a) => {
+              const inner = (
+                <>
+                  {a.icon ? <Image src={a.icon} alt="" width={88} loading="lazy" /> : <span class="mono-ic">{a.name[0]}</span>}
+                  <span class="ap-t"><b>{a.name}</b><small>{a.tagline}</small></span>
+                </>
+              );
+              return a.website ? (
+                <a class="app-pill" style={`--c:${a.accent}`} href={a.website} target="_blank" rel="noopener" aria-hidden={dup ? 'true' : undefined} tabindex={dup ? -1 : undefined}>{inner}</a>
+              ) : (
+                <span class="app-pill" style={`--c:${a.accent}`} aria-hidden={dup ? 'true' : undefined}>{inner}</span>
+              );
+            })
+          )}
+        </div>
+      </div>
+    </div>
+    <a class="w b-cta fly" data-w="FilledButton" href="#contact">
+      <span class="tagline">FREE · NO COMMITMENT</span>
+      <b>30-min consultation about your app</b>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+<script>import '../scripts/rotator';</script>
+<script>import '../scripts/clock';</script>
