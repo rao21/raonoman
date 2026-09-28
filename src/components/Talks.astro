@@ -26,7 +26,7 @@ const filters: { label: string; f: string }[] = [
     codeKeyword="await"
     code=" community.giveBack();"
     title="Speaking & community"
-    lede="Ten talks, panels, workshops and mentoring roles since 2022, plus teaching and community work in Pakistan."
+    lede="Talks, panels, workshops and mentoring since 2022, plus teaching and community work in Pakistan."
   />
   <div class="comm">
     {community.map((c) => (
@@ -41,9 +41,9 @@ const filters: { label: string; f: string }[] = [
   <h3 class="more-title">Talks, panels &amp; mentoring</h3>
   <div class="tstats">
     <div><b>{talks.length}</b><span>appearances since 2022</span></div>
-    <div><b>{speakerCount}</b><span>talks</span></div>
-    <div><b>{panelCount}</b><span>panels</span></div>
-    <div><b>{mentorJudgeCount}</b><span>mentor &amp; judge roles</span></div>
+    <div><b>{speakerCount}</b><span>talk{speakerCount === 1 ? '' : 's'}</span></div>
+    <div><b>{panelCount}</b><span>panel{panelCount === 1 ? '' : 's'}</span></div>
+    <div><b>{mentorJudgeCount}</b><span>mentor &amp; judge role{mentorJudgeCount === 1 ? '' : 's'}</span></div>
     <div><b>{trainerCount}</b><span>workshop{trainerCount === 1 ? '' : 's'}</span></div>
   </div>
   <div class="tfilter" role="toolbar" aria-label="Filter talks">
