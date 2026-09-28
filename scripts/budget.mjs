@@ -22,6 +22,11 @@ async function main() {
 
   const errors = [];
 
+  // Developer-only toolbar buttons must never reach a production build.
+  if (process.env.PUBLIC_DEV_TOOLS !== 'true' && /id="(btnDebug|btnRebuild)"/.test(html)) {
+    errors.push('Debug paint / Rebuild buttons found in a production build (set PUBLIC_DEV_TOOLS only for tests).');
+  }
+
   const pages = (await readdir(DIST, { recursive: true })).filter((f) => f.endsWith('.html')).sort();
   for (const page of pages) {
     const text = await readFile(path.join(DIST, page), 'utf8');

@@ -1,10 +1,13 @@
 ---
+// Debug paint and Rebuild are developer-only: shown in `astro dev` and in test
+// builds (PUBLIC_DEV_TOOLS=true), never on the live site.
+const devTools = import.meta.env.DEV || import.meta.env.PUBLIC_DEV_TOOLS === 'true';
 ---
 
 <div class="devbar" role="toolbar" aria-label="Developer tools">
   <button type="button" id="btnReload"><span class="bolt">⚡</span> <span class="lbl">Hot reload</span></button>
-  <button type="button" id="btnDebug" aria-pressed="false">▦ <span class="lbl">Debug paint</span></button>
-  <button type="button" id="btnRebuild">↺ <span class="lbl">Rebuild</span></button>
+  {devTools && <button type="button" id="btnDebug" aria-pressed="false">▦ <span class="lbl">Debug paint</span></button>}
+  {devTools && <button type="button" id="btnRebuild">↺ <span class="lbl">Rebuild</span></button>}
 </div>
 <div class="toast" id="toast"></div>
 <script>import '../scripts/skins';</script>
