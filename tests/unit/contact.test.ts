@@ -11,11 +11,18 @@ describe('contact', () => {
     expect(validateContact({ ...ok, about: '' })).toBe('about');
   });
   it('builds a prefilled WhatsApp link', () => {
-    const url = buildWhatsAppUrl('923332256193', ok);
+    const url = buildWhatsAppUrl('923332256193', ok, true);
     expect(url.startsWith('https://wa.me/923332256193?text=')).toBe(true);
     const text = decodeURIComponent(url.split('text=')[1]);
+    expect(text.split('\n')[0]).toBe('Hi Rao, I just sent a call request on your website.');
     expect(text).toContain('Name: Sara');
     expect(text).toContain('I need help with: Build');
+    expect(text).toContain('About my app: A wallet app');
+  });
+  it('WhatsApp text admits when the request did not go through', () => {
+    const text = decodeURIComponent(buildWhatsAppUrl('923332256193', ok, false).split('text=')[1]);
+    expect(text.split('\n')[0]).toBe("Hi Rao, I tried to send a call request on your website but it didn't go through.");
+    expect(text).toContain('Name: Sara');
     expect(text).toContain('About my app: A wallet app');
   });
   it('receipt says what happened', () => {

@@ -24,6 +24,24 @@ test('successful request shows receipt and WhatsApp link', async ({ page }) => {
   const wa = page.getByRole('link', { name: 'Continue on WhatsApp' });
   await expect(wa).toBeVisible();
   await expect(wa).toHaveAttribute('href', /wa\.me\/923332256193\?text=.*Sara/);
+  await expect(wa).toHaveAttribute('href', /just%20sent/);
+  // The form is cleared so a second click can't resend the same request.
+  await expect(page.locator('#f-name')).toHaveValue('');
+  await expect(page.locator('#f-email')).toHaveValue('');
+  await expect(page.locator('#f-what')).toHaveValue('');
+  await expect(page.getByRole('radio', { name: 'New app' })).toBeChecked();
+  await expect(page.locator('#receipt')).toContainText('✓ RECEIVED');
+});
+
+test('a changed need resets to New app after a successful send', async ({ page }) => {
+  await page.route(API, r => r.fulfill({ status: 200, json: { success: true } }));
+  await page.goto('./#contact');
+  await page.getByText('App audit', { exact: true }).click();
+  await fill(page);
+  await page.click('#contact button[type=submit]');
+  await expect(page.locator('#receipt')).toContainText('✓ RECEIVED');
+  await expect(page.getByRole('radio', { name: 'New app' })).toBeChecked();
+  await expect(page.locator('#f-name')).toHaveValue('');
 });
 
 test('failed request never pretends to succeed', async ({ page }) => {
@@ -34,6 +52,9 @@ test('failed request never pretends to succeed', async ({ page }) => {
   await expect(page.locator('#receipt')).toContainText('✕ NOT SENT');
   await expect(page.locator('#receipt')).toContainText('rao.noman786@outlook.com');
   await expect(page.getByRole('link', { name: 'Continue on WhatsApp' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Continue on WhatsApp' })).toHaveAttribute('href', /didn't%20go%20through|didn%27t%20go%20through/);
+  // A failed send keeps what was typed so it can be retried.
+  await expect(page.locator('#f-name')).toHaveValue('Sara');
 });
 
 for (const [label, handler] of [

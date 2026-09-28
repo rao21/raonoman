@@ -90,7 +90,10 @@ if (form && receipt && waBtn) {
 
     if (!isFlipped()) setFlipped(true);
     showReceipt(receiptLines(id, fields, sent));
-    waBtn.href = buildWhatsAppUrl(site.whatsapp, fields);
+    waBtn.href = buildWhatsAppUrl(site.whatsapp, fields, sent);
+    // Clear a delivered request (need goes back to its "New app" default) so a second
+    // click can't resend it; a failed one keeps the text for a retry.
+    if (sent) form.reset();
     waBtn.hidden = false;
     if (!reduce) {
       waBtn.classList.remove('pop');

@@ -21,9 +21,12 @@ export function validateContact(f: ContactFields): keyof ContactFields | null {
   return null;
 }
 
-export function buildWhatsAppUrl(number: string, f: ContactFields): string {
+export function buildWhatsAppUrl(number: string, f: ContactFields, sent: boolean): string {
+  const opener = sent
+    ? 'Hi Rao, I just sent a call request on your website.'
+    : "Hi Rao, I tried to send a call request on your website but it didn't go through.";
   const text =
-    'Hi Rao, I just sent a call request on your website.\n' +
+    opener + '\n' +
     `Name: ${f.name.trim()}\n` +
     `I need help with: ${f.need}\n` +
     `About my app: ${f.about.trim()}`;
