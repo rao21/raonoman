@@ -5,7 +5,9 @@ const boot = document.getElementById('boot');
 const bootCode = document.getElementById('bootCode');
 const h1 = document.getElementById('headline');
 const bento = document.getElementById('bento');
-const flyers = Array.from(document.querySelectorAll<HTMLElement>('.fly'));
+// .b-head holds the LCP element (#headline) and must stay painted at opacity 1
+// from first paint, so it is excluded from the scatter/assemble flyers.
+const flyers = Array.from(document.querySelectorAll<HTMLElement>('.fly:not(.b-head)'));
 
 let timers: ReturnType<typeof setTimeout>[] = [];
 let active = false;
@@ -84,7 +86,6 @@ function scatter() {
     const r = (n: number, off: number) => Math.random() * n - off;
     el.style.transform = `translate3d(${r(300, 150)}px,${r(220, 60)}px,${250 + Math.random() * 400}px) rotateX(${r(50, 25)}deg) rotateY(${r(50, 25)}deg)`;
   });
-  h1?.classList.add('pre');
 }
 
 function assemble() {
@@ -95,8 +96,6 @@ function assemble() {
       el.style.transform = '';
     }, 60 + i * 90)
   );
-  words.forEach((w, i) => (w.style.transitionDelay = `${350 + i * 70}ms`));
-  later(() => h1?.classList.remove('pre'), 30);
   later(countUp, 500);
 }
 
