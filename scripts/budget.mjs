@@ -1,8 +1,9 @@
-// Checks that the built home page stays within its CSS/JS size budget and
-// contains no leftover placeholder copy. Only assets actually referenced by
+// Checks that the built home page stays within its CSS/JS size budget and that
+// no built page (every dist/**/*.html) contains leftover placeholder copy.
+// For the size budget, only assets actually referenced by
 // dist/index.html are counted (script src, link rel=stylesheet href, and
 // inline <style>/<script> contents) — not every file under dist/.
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import path from 'node:path';
 
@@ -21,9 +22,14 @@ async function main() {
 
   const errors = [];
 
-  for (const re of PLACEHOLDERS) {
-    if (re.test(html)) errors.push(`Placeholder text matching ${re} found in dist/index.html`);
+  const pages = (await readdir(DIST, { recursive: true })).filter((f) => f.endsWith('.html')).sort();
+  for (const page of pages) {
+    const text = await readFile(path.join(DIST, page), 'utf8');
+    for (const re of PLACEHOLDERS) {
+      if (re.test(text)) errors.push(`Placeholder text matching ${re} found in dist/${page}`);
+    }
   }
+  console.log(`Scanned ${pages.length} pages for placeholder text.`);
 
   let jsBytes = 0;
   let cssBytes = 0;
