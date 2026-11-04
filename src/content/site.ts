@@ -21,13 +21,13 @@ export const site: {
   fullName: 'Rao Muhammad Noman',
   title: 'Rao Noman · Flutter Consultant & AI Engineer',
   description:
-    'Rao Noman is a Flutter consultant and AI engineer (LLM, RAG, Python) for fintech and AI startups in the Gulf, the UK and the US. 10 years, 10+ live apps, used by millions. Book a free 30-minute call.',
+    'Rao Noman is a Flutter consultant and AI engineer (LLM, RAG, Python) for fintech, healthcare and AI startups in the Gulf, the UK, Europe and the US. 10+ years, 15+ published apps, used by millions. Book a free 30-minute call.',
   kicker: 'Flutter consultant & AI engineer',
   headlineLead: 'I help startups ship mobile apps that',
   phrases: ['scale to millions.', 'bring AI to users.', 'handle real money.', 'pass store review.', 'run everywhere.'],
-  lede: 'Strategy, architecture and hands-on Flutter, plus AI features built on LLMs and RAG. For fintech and AI startups in the Gulf, the UK and the US. Ten years of shipping, with apps used by millions of people.',
+  lede: 'Strategy, architecture and hands-on Flutter, plus AI features built on LLMs and RAG. For fintech, healthcare and AI startups in the Gulf, the UK, Europe and the US. Over ten years of shipping, with apps used by millions of people.',
   email: 'rao.noman786@outlook.com',
-  whatsapp: '923332256193',
+  whatsapp: '923394021210',
   linkedin: 'https://www.linkedin.com/in/rao-muhammad-noman-448745a1/',
   github: 'https://github.com/rao21',
   medium: 'https://raonoman21.medium.com/',
@@ -35,7 +35,7 @@ export const site: {
   country: 'Pakistan',
   timezone: 'Asia/Karachi',
   stats: [
-    { value: 10, suffix: '', label: 'years building mobile apps', tag: 'EXPERIENCE' },
-    { value: 10, suffix: '+', label: 'live apps on both stores', tag: 'IN PRODUCTION' },
+    { value: 10, suffix: '+', label: 'years building mobile apps', tag: 'EXPERIENCE' },
+    { value: 15, suffix: '+', label: 'apps published to the stores', tag: 'PUBLISHED' },
   ],
 };

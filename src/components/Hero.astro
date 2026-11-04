@@ -22,7 +22,7 @@ const copies = [false, true];
 <header class="hero wrap">
   <div class="bento" id="bento">
     <div class="w b-head fly" data-w="Column">
-      <span class="tagline">LEAD FLUTTER ENGINEER · AI ENGINEER · {years.value}{years.suffix} YEARS</span>
+      <span class="tagline">LEAD MOBILE & AI ENGINEER · {years.value}{years.suffix} YEARS</span>
       <h1 id="headline"><span class="h1-kicker">{site.kicker}</span>{site.headlineLead} <span class="rot" id="rot" data-phrases={JSON.stringify(site.phrases)}><em>{site.phrases[0]}</em><i class="caret" aria-hidden="true"></i></span></h1>
       <p class="lede">{site.lede}</p>
       <div class="hero-btns"><a class="btn primary" href="#contact">Book a free 30-min call</a><a class="btn" href="#work">See case studies</a></div>
@@ -34,7 +34,7 @@ const copies = [false, true];
         {phones.map((p) => (
           <Image src={p.img} alt="" class={p.cls} loading="eager" widths={[240, 360]} sizes="(max-width: 900px) 140px, 200px" />
         ))}
-        <span class="hp-badge">⚡ {apps.value}{apps.suffix} live apps</span>
+        <span class="hp-badge">⚡ {apps.value}{apps.suffix} apps published</span>
       </div>
     </div>
     {site.stats.map((s, i) => (

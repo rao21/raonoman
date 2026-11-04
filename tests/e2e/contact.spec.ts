@@ -23,7 +23,7 @@ test('successful request shows receipt and WhatsApp link', async ({ page }) => {
   await expect(page.locator('#receipt')).toContainText('✓ RECEIVED');
   const wa = page.getByRole('link', { name: 'Continue on WhatsApp' });
   await expect(wa).toBeVisible();
-  await expect(wa).toHaveAttribute('href', /wa\.me\/923332256193\?text=.*Sara/);
+  await expect(wa).toHaveAttribute('href', /wa\.me\/923394021210\?text=.*Sara/);
   await expect(wa).toHaveAttribute('href', /just%20sent/);
   // The form is cleared so a second click can't resend the same request.
   await expect(page.locator('#f-name')).toHaveValue('');
@@ -158,10 +158,10 @@ test('card back and direct chips carry the contact details', async ({ page }) =>
   const c = page.locator('#contact');
   await expect(c.locator('.front')).toContainText('RAO NOMAN');
   await expect(c.locator('.front')).toContainText('PAKISTAN');
-  await expect(c.locator('.back')).toContainText('+92 333 2256193');
+  await expect(c.locator('.back')).toContainText('+92 339 4021210');
   await expect(c.getByRole('link', { name: /Download CV/ })).toHaveAttribute('href', /drive\.google\.com/);
   await expect(c.locator('.direct a[href^="mailto:rao.noman786@outlook.com"]')).toHaveCount(1);
-  await expect(c.locator('.direct a[href^="https://wa.me/923332256193"]')).toHaveCount(1);
+  await expect(c.locator('.direct a[href^="https://wa.me/923394021210"]')).toHaveCount(1);
   await expect(c.locator('.direct a[href="https://github.com/rao21"]')).toHaveCount(1);
   await expect(c.getByRole('radio', { name: 'New app' })).toBeChecked();
   await expect(c.getByRole('radio')).toHaveCount(5);

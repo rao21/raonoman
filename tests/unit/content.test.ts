@@ -42,8 +42,8 @@ describe('content rules', () => {
     expect(text).not.toMatch(/NDA/);
   });
   it('gets the corrected facts right', () => {
-    expect(journey.find(j => j.company === 'Figg Wealth')?.role).toBe('Senior Software Engineer');
-    expect(journey.find(j => j.company.startsWith('Institute of Business Administration'))?.role).toBe('Visiting Faculty');
+    expect(journey.find(j => j.company === 'Figg Wealth')?.role).toBe('Senior Flutter & AI Engineer');
+    expect(journey.find(j => j.company.startsWith('Institute of Business Administration'))?.role).toBe('Flutter Instructor (Part-Time)');
     expect(JSON.stringify(journey)).not.toMatch(/led the mobile team|mentored junior/i);
   });
   it('uses https for every external link', () => {

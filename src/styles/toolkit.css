@@ -3,7 +3,8 @@
 .stackcat{grid-column:span 2; padding:22px; display:grid; gap:18px; align-content:start}
 .stackcat.st-ai{grid-column:span 4; background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--tile)),var(--tile) 55%)}
 .stackcat:nth-child(1){grid-column:span 2}
-@media (max-width:980px){ .stack{grid-template-columns:repeat(2,minmax(0,1fr))} .stackcat,.stackcat.st-ai,.stackcat:nth-child(1){grid-column:1/-1} }
+.stackcat:nth-child(6){grid-column:1/-1}
+@media (max-width:980px){ .stack{grid-template-columns:repeat(2,minmax(0,1fr))} .stackcat,.stackcat.st-ai,.stackcat:nth-child(1),.stackcat:nth-child(6){grid-column:1/-1} }
 .sc-head{display:grid; gap:8px}
 .sc-head .ic{font:500 12px/1 "Geist Mono Variable",monospace; color:var(--accent)}
 .sc-head h3{margin:0; font-family:var(--head); font-weight:var(--headw); letter-spacing:var(--headls); font-size:28px; line-height:1}

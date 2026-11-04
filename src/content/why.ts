@@ -5,7 +5,7 @@ export const reasons: { eyebrow: string; body: string }[] = [
   },
   {
     eyebrow: 'FLUTTER COMMUNITY',
-    body: 'Co-founder of Flutter Pakistan, regular speaker at conferences and meetups, and visiting faculty at the Institute of Business Administration (IBA), Karachi since 2023.',
+    body: 'Co-founder of Flutter Pakistan, regular speaker at conferences and meetups, and part-time Flutter instructor at the Institute of Business Administration (IBA), Karachi since 2023.',
   },
   {
     eyebrow: 'BEYOND FLUTTER',
