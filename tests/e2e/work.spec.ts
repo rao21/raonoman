@@ -10,12 +10,12 @@ test('case studies link out to their websites', async ({ page }) => {
 test('no placeholder result rows ship', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('#work')).not.toContainText('Add a');
-  await expect(page.locator('#work .case', { hasText: 'Xpence' }).getByText('Result', { exact: true })).toHaveCount(0);
+  await expect(page.locator('#work .case', { hasText: 'PsychPlus' }).getByText('Result', { exact: true })).toHaveCount(0);
   await expect(page.locator('#work .case', { hasText: 'JazzCash' }).getByText("Pakistan's largest mobile wallet")).toBeVisible();
 });
 
 test('every case study has its own page', async ({ page }) => {
-  for (const slug of ['xpence', 'cence', 'figg-wealth', 'jazzcash', 'rock']) {
+  for (const slug of ['xpence', 'cence', 'psychplus', 'figg-wealth', 'jazzcash', 'rock']) {
     const res = await page.goto(`./work/${slug}/`);
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toBeVisible();
@@ -23,7 +23,7 @@ test('every case study has its own page', async ({ page }) => {
   }
 });
 
-const SLUGS = ['xpence', 'cence', 'figg-wealth', 'jazzcash', 'rock'];
+const SLUGS = ['xpence', 'cence', 'psychplus', 'figg-wealth', 'jazzcash', 'rock'];
 
 test('case-study canonicals match the sitemap', async ({ page }) => {
   const { readFileSync } = await import('node:fs');

@@ -11,9 +11,9 @@ test('toolkit has Python and FastAPI, no .NET', async ({ page }) => {
 test('journey facts and aligned logos', async ({ page }) => {
   await page.goto('./');
   const tree = page.locator('#journey');
-  await expect(tree).toContainText('Visiting Faculty');
+  await expect(tree).toContainText('Flutter Instructor (Part-Time)');
   await expect(tree).toContainText('Institute of Business Administration (IBA), Karachi');
-  await expect(tree.locator('summary', { hasText: 'Figg Wealth' })).toContainText('Senior Software Engineer');
+  await expect(tree.locator('summary', { hasText: 'Figg Wealth' })).toContainText('Senior Flutter & AI Engineer');
   const xs = await tree.locator('.role').evaluateAll(els => els.map(e => Math.round(e.getBoundingClientRect().left)));
   expect(new Set(xs).size).toBe(1);
 });

@@ -143,13 +143,13 @@ export const community: { eyebrow: string; title: string; body: string; href: st
   {
     eyebrow: 'CO-FOUNDER',
     title: 'Flutter Pakistan',
-    body: 'Part of the Flutter Karachi community from the start: meetups, study jams and events.',
+    body: 'Organized 20+ workshops reaching 500+ developers, with meetups, study jams and events.',
     href: 'https://flutterpk.github.io/',
   },
   {
-    eyebrow: 'VISITING FACULTY · 2023 → NOW',
+    eyebrow: 'FLUTTER INSTRUCTOR (PART-TIME) · 2023 → NOW',
     title: 'Institute of Business Administration (IBA), Karachi',
-    body: 'Teaching Application Development for Mobile Devices in the Computer Science department.',
+    body: 'Designed a Flutter curriculum adopted by 200+ students, and mentored 50+ students with 15 apps published.',
     href: 'https://www.iba.edu.pk/faculty-profile.php?ftype=Visiting&id=rmnoman',
   },
   {

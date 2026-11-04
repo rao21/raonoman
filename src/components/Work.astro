@@ -51,7 +51,7 @@ import '../styles/work.css';
             {c.website ? (
               <a class="chip" href={c.website} target="_blank" rel="noopener">Website ↗</a>
             ) : (
-              <span class="chip muted">No longer on the stores</span>
+              c.linkNote && <span class="chip muted">{c.linkNote}</span>
             )}
             {c.appStore && <a class="chip" href={c.appStore} target="_blank" rel="noopener">App Store ↗</a>}
             {c.googlePlay && <a class="chip" href={c.googlePlay} target="_blank" rel="noopener">Google Play ↗</a>}
